@@ -1,0 +1,107 @@
+body{
+    height: 100%;
+}
+
+.title{
+    text-align: center;
+}
+
+.nav-back {
+    background-color:black;
+}
+
+.nav{
+    height: 60px;
+    width:1200px;
+    margin:0 auto;
+    position: relative;
+ 
+}
+
+.nav ul{
+    text-align: center;
+    height:100%;
+    width: 100%;
+    list-style: none;
+}
+
+.nav li{
+    display:inline-block;
+}
+
+.nav ul li  a{
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    line-height: 60px;
+    margin:0 20px;
+}
+
+.nav li:hover {
+    background-color: gray;
+}
+
+
+.section{
+    position: relative;
+    display: block;
+    background-color:black;
+    /* height:50px; */
+    width:1200px;
+    margin: 20px auto 50px auto;
+    text-align: left;
+    padding: 5px 5px 5px 0;
+}
+
+
+.sec_title{
+    display: block;
+    text-decoration: none;
+    color:white;
+    font-size: 18px;
+}
+
+.content {
+    margin: 10px auto, 20px, auto;
+    padding: 5px 5px 5px 0;
+    display: block;
+    height:170px;
+    width:1200px;
+    background-color:lightgray;
+    font-size: 18px;
+}
+
+.content a{
+    margin-left:10px;
+}
+
+.content p{
+    margin-left:10px;
+}
+
+
+
+#problem_intro_sec{
+    height:300px;
+}
+
+#problem_intro_con{
+    height:220px;
+}
+
+
+button {
+    margin-left: 20px;
+}
+
+.bottom{
+    position: relative;
+    bottom: 0;
+    width:100%;
+    margin: 20px;
+    padding:1px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
