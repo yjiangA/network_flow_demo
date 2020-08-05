@@ -265,26 +265,287 @@
         <p>&nbsp &nbsp &nbsp Cuts of flow networks</p>
     </div>
     <div class="content" id="res_con">
-        <p><b>Cut</b>
 
+        <p><b>Cut:</b> A cut(S, T) of flow network G is a partition of V into 2 parts:</p>
+        <p> &nbsp &nbsp &nbsp S, which contains supply s; </p>
+        <p> &nbsp &nbsp &nbsp T, which contains target t </p>
+
+        <p><b>Net Flow:</b> If f is a flow, the net flow(S, T) across the cut(S, T) is defined to be:</p>
+
+        <p> &nbsp &nbsp &nbsp f(S,T) = 
+            &sum; <sub> u &isin; S </sub>
+            &sum; <sub> v &isin; T </sub>
+            f(u,v)
+            &nbsp - &nbsp
+            &sum; <sub> u &isin; S </sub>
+            &sum; <sub> v &isin; T </sub>
+            f(v,u)
         </p>
 
-        <p>net flow(S,T), with graph</p>
         
-        <p>capacity, with graph</p>
+        <p> &nbsp &nbsp &nbsp f(S,T) = 
+            <span id= "uins1">&sum; <sub> u &isin; S </sub></span>
+            <span id= "vint1">&sum; <sub> v &isin; T </sub></span>
+            <span id= "fuv">f(u,v)</span>
+            &nbsp - &nbsp
+            <span id= "uins2">&sum; <sub> u &isin; S </sub></span>
+            <span id= "vint2">&sum; <sub> v &isin; T </sub></span>
+            <span id= "fvu">f(v,u)</span>
+            &nbsp &nbsp (Click to see explaination of each part)
+        </p>
         
-        <p>minimum cut</p>
+        <p>
+            <span id= "uins1_hint" style="visibility:hidden;">All nodes in part S</span>
+            <span id= "vint1_hint" style="visibility:hidden;">All nodes in part T</sub></span>
+            <span id= "fuv_hint" style="visibility:hidden;">Sum up the flow from nodes in S to nodes in T</span>
+            <span id= "uins2_hint" style="visibility:hidden;">All nodes in part S</span>
+            <span id= "vint2_hint" style="visibility:hidden;">All nodes in part T</sub></span>
+            <span id= "fvu_hint" style="visibility:hidden;">Sum up the flow from nodes in T to nodes in S</span>
+        </p>
+
+        <p><b>Net Flow on Example cuts:</b>
+        <button id="cut1">cut 1</button>
+        <button id="cut2">cut 2</button>
+        <button id="cut3">cut 3</button>
+        <button id="cut4">cut 4</button>
+        <button id="cut_reset">reset</button>
+    </p>
+
+        <div style="float: left;">
+            <p id="c1_nf" style="visibility: hidden;"> (12 + 11) - (4) = 19</p>
+            <p id="c2_nf" style="visibility: hidden;"> (11 + 8) - (0) = 19</p>
+            <p id="c3_nf" style="visibility: hidden;"> (15 + 4) - (0) = 19</p>
+            <p id="c4_nf" style="visibility: hidden;"> (11+1+11+15) - (12+7) = 19</p>
+       </div>
+
+
+        <svg id="net_flow_eg" width="800" height="350">
+            <defs>
+                <marker id="arrow"
+                        markerUnits="strokeWidth"
+                        markerWidth="12"
+                        markerHeight="12"
+                        viewBox="0 0 12 12"
+                        refX="6"
+                        refY="6"
+                        orient="auto">
+                    <path d="M2,2 L10,6 L2,10 L6,6 L2,2" style="fill:black" />
+                </marker>
+            </defs>
+
+            <g>
+                <line id="sv1" x1="30" y1="165" x2="190.2" y2="58" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id="v1v3" x1="200" y1="35" x2="454" y2="35" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id="v3v2" x1="520" y1="15" x2="262.5" y2="282.5" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v2v4" x1="200" y1="315" x2="454" y2="315" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v4t" x1="500" y1="315" x2="665" y2="195" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "sv2" x1="30" y1="165" x2="190.2" y2="292" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v2v1" x1="230" y1="315" x2="230" y2="81" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v4v3" x1="500" y1="315" x2="500" y2="81" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v3t" x1="500" y1="35" x2="662" y2="140" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+            </g>
+
+            <g class="flow_demo" style="display:none">
+                <line class="flow" id="sv1_f" x1="30" y1="165" x2="190.2" y2="58" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id="v1v3_f" x1="200" y1="35" x2="454" y2="35" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id="v3v2_f" x1="520" y1="15" x2="262.5" y2="282.5" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "v2v4_f" x1="200" y1="315" x2="454" y2="315" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "v4t_f" x1="500" y1="315" x2="665" y2="195" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "sv2_f" x1="30" y1="165" x2="190.2" y2="292" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "v2v1_f" x1="230" y1="315" x2="230" y2="81" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "v4v3_f" x1="500" y1="315" x2="500" y2="81" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "v3t_f" x1="500" y1="35" x2="662" y2="140" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+            </g>
+
+            <g class="nodes">
+                <circle id="s" cx="30" cy="165" r="30" style="fill:lightblue; stroke:blue" />
+                <circle id="v1" cx="230" cy="35" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="v2" cx="230" cy="315" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="v3" cx="500" cy="35" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="v4" cx="500" cy="315" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="t" cx="700" cy="165" r="30" style="fill:lightblue; stroke:blue" />
+            </g>
+
+            <g>
+                <text id="stext" x="25" y="170">S</text>
+                <text id="stext" x="220" y="40">V1</text>
+                <text id="stext" x="220" y="320">V2</text>
+                <text id="stext" x="490" y="40">V3</text>
+                <text id="stext" x="490" y="320">V4</text>
+                <text id="stext" x="690" y="170">T</text>
+            </g>
+
+            <g class="flow_value" style="display: block;">
+                <text id="sv1_flow_v" x="65" y="100">11/16</text>
+                <text id="v1v3_flow_v" x="345" y="25">12/12</text>
+                <text id="v3v2_flow_v" x="340" y="165">4/9</text>
+                <text id="v2v4_flow_v" x="345" y="305">11/14</text>
+                <text id="v4t_flow_v" x="565" y="242">4/4</text>
+                <text id="sv2_flow_v" x="110" y="225">8/13</text>
+                <text id="v2v1_flow_v" x="195" y="180">1/4</text>
+                <text id="v4v3_flow_v" x="470" y="180">7/7</text>
+                <text id="v3t_flow_v" x="585" y="85">15/20</text>
+            </g>
+
+            <g>
+                <polyline id="c1" points="320,0 320,500"
+                style="fill:none;stroke:yellow;stroke-width:5; visibility: hidden;" />
+                
+                <polyline id="c2" points="170,0 170,500"
+                style="fill:none;stroke:yellow;stroke-width:5; visibility: hidden;" />
+                
+                <polyline id="c3" points="550,0 550,500"
+                style="fill:none;stroke:yellow;stroke-width:5; visibility: hidden;" />
+                
+                <polyline id="c4" points="170,0 170,150 340,150 430,0 600,0 320,500"
+                style="fill:none;stroke:yellow;stroke-width:5; visibility: hidden;" />
+            </g>
+
+            
+        </svg>
+
+
+        <p>Obervation: The net flow acorss any cut is the sam, which euqals the value of the flow</p>
+        
+
+
+        <p><b>Capacity of cut:</b> The capacity of cut(S, T) is sum of capacity of edges from node in set S to T</p>
+        <p> &nbsp &nbsp &nbsp c(S,T) = 
+            <span id= "uins3">&sum; <sub> u &isin; S </sub></span>
+            <span id= "vint3">&sum; <sub> v &isin; T </sub></span>
+            <span id= "cuv">c(u,v)</span>
+            &nbsp &nbsp (Click to see explaination of each part)
+        </p>
+        
+        <p>
+            <span id= "uins3_hint" style="visibility:hidden;">All nodes in part S</span>
+            <span id= "vint3_hint" style="visibility:hidden;">All nodes in part T</sub></span>
+            <span id= "cuv_hint" style="visibility:hidden;">Sum up the capacity from nodes in S to nodes in T</span>
+        </p> 
+
+        
+        <p><b>Capacity on example cuts:</b>
+            <button id="cut1_c">cut 1</button>
+            <button id="cut2_c">cut 2</button>
+            <button id="cut3_c">cut 3</button>
+            <button id="cut4_c">cut 4</button>
+            <button id="cut_reset_c">reset</button>
+        </p>
+
+        <div style="float: left;">
+            <p id="c1_capa" style="visibility: hidden;"> 12 + 14 = 26</p>
+            <p id="c2_capa" style="visibility: hidden;"> 16 + 13 = 29</p>
+            <p id="c3_capa" style="visibility: hidden;"> 20 + 4 = 24</p>
+            <p id="c4_capa" style="visibility: hidden;"> 16 + 4 + 14 + 20 = 54</p>
+       </div>
+
+        <svg id="capacity_eg" width="800" height="350">
+            <defs>
+                <marker id="arrow"
+                        markerUnits="strokeWidth"
+                        markerWidth="12"
+                        markerHeight="12"
+                        viewBox="0 0 12 12"
+                        refX="6"
+                        refY="6"
+                        orient="auto">
+                    <path d="M2,2 L10,6 L2,10 L6,6 L2,2" style="fill:black" />
+                </marker>
+            </defs>
+
+            <g>
+                <line id="sv1" x1="30" y1="165" x2="190.2" y2="58" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id="v1v3" x1="200" y1="35" x2="454" y2="35" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id="v3v2" x1="520" y1="15" x2="262.5" y2="282.5" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v2v4" x1="200" y1="315" x2="454" y2="315" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v4t" x1="500" y1="315" x2="665" y2="195" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "sv2" x1="30" y1="165" x2="190.2" y2="292" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v2v1" x1="230" y1="315" x2="230" y2="81" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v4v3" x1="500" y1="315" x2="500" y2="81" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v3t" x1="500" y1="35" x2="662" y2="140" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+            </g>
+
+            <g class="flow_demo" style="display:none">
+                <line class="flow" id="sv1_f" x1="30" y1="165" x2="190.2" y2="58" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id="v1v3_f" x1="200" y1="35" x2="454" y2="35" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id="v3v2_f" x1="520" y1="15" x2="262.5" y2="282.5" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "v2v4_f" x1="200" y1="315" x2="454" y2="315" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "v4t_f" x1="500" y1="315" x2="665" y2="195" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "sv2_f" x1="30" y1="165" x2="190.2" y2="292" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "v2v1_f" x1="230" y1="315" x2="230" y2="81" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "v4v3_f" x1="500" y1="315" x2="500" y2="81" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "v3t_f" x1="500" y1="35" x2="662" y2="140" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+            </g>
+
+            <g class="nodes">
+                <circle id="s" cx="30" cy="165" r="30" style="fill:lightblue; stroke:blue" />
+                <circle id="v1" cx="230" cy="35" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="v2" cx="230" cy="315" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="v3" cx="500" cy="35" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="v4" cx="500" cy="315" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="t" cx="700" cy="165" r="30" style="fill:lightblue; stroke:blue" />
+            </g>
+
+            <g>
+                <text id="stext" x="25" y="170">S</text>
+                <text id="stext" x="220" y="40">V1</text>
+                <text id="stext" x="220" y="320">V2</text>
+                <text id="stext" x="490" y="40">V3</text>
+                <text id="stext" x="490" y="320">V4</text>
+                <text id="stext" x="690" y="170">T</text>
+            </g>
+
+            <g class="flow_value" style="display: block;">
+                <text id="sv1_flow_v" x="65" y="100">11/16</text>
+                <text id="v1v3_flow_v" x="345" y="25">12/12</text>
+                <text id="v3v2_flow_v" x="340" y="165">4/9</text>
+                <text id="v2v4_flow_v" x="345" y="305">11/14</text>
+                <text id="v4t_flow_v" x="565" y="242">4/4</text>
+                <text id="sv2_flow_v" x="110" y="225">8/13</text>
+                <text id="v2v1_flow_v" x="195" y="180">1/4</text>
+                <text id="v4v3_flow_v" x="470" y="180">7/7</text>
+                <text id="v3t_flow_v" x="585" y="85">15/20</text>
+            </g>
+
+            <g>
+                <polyline id="c1" points="320,0 320,500"
+                style="fill:none;stroke:yellow;stroke-width:5; visibility: hidden;" />
+                
+                <polyline id="c2" points="170,0 170,500"
+                style="fill:none;stroke:yellow;stroke-width:5; visibility: hidden;" />
+                
+                <polyline id="c3" points="550,0 550,500"
+                style="fill:none;stroke:yellow;stroke-width:5; visibility: hidden;" />
+                
+                <polyline id="c4" points="170,0 170,150 340,150 430,0 600,0 320,500"
+                style="fill:none;stroke:yellow;stroke-width:5; visibility: hidden;" />
+            </g>
+
+            
+        </svg>
+
+
+        <p><b>Minimum Cut: </b> A cut whose capacity is minimum over all cuts of the network</p>
+    
+        <p>Corollary 26.5: The value of any flow f in a flow network G is bounded from above by the capacity of any cut of G.</p>
     </div>
 </div>
+
 
 <div class="section" id="res_sec">
     <div class="sec_title">
         <p>&nbsp &nbsp &nbsp Max-flow min-cut Theorem</p>
     </div>
     <div class="content" id="res_con">
+        <p><b>Content:</b> If f is a flow in a flow network G=(V,E) with source s and sink t,
+             then the following conditions are equivalent:</p>
+        <p> &nbsp &nbsp &nbsp 1. f is a maximum flow in G</p>
+        <p> &nbsp &nbsp &nbsp 2. The residual network G<sub>f</sub> contains no augmenting paths.</p>
+        <p> &nbsp &nbsp &nbsp 3. |f| = c(S,T) for some cut(S,T) of G.</p>
         <p>Proof, click pop up windows can show corollary<button id="coro26.3">WHY?</button></p>
     </div>
 </div>
+
 
 <div class="bottom">
   <p>Yuye.Jiang@tufts.edu  &nbsp &nbsp &nbsp  Comp150-ALG-Summer2020</p>

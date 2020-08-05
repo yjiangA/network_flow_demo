@@ -1,4 +1,5 @@
-var texts = ["edges", "change", "send", "sendmore", "sendback", "min", "resedges"]
+var texts = ["edges", "change", "send", "sendmore", "sendback", "min", "resedges",
+"uins1", "uins2", "vint1", "vint2", "fuv", "fvu", "uins3", "vint3", "cuv"]
 
 
 for(item in texts){
@@ -57,4 +58,368 @@ document.getElementById("fill_reset").onclick = function(){
     window.location.reload();
 }
 
+var net_flow_eg = document.getElementById("net_flow_eg")
+
+document.getElementById("cut1").onclick = function(){
+    document.getElementById("c1").style.visibility="visible";
+    document.getElementById("c2").style.visibility="hidden";
+    document.getElementById("c3").style.visibility="hidden";
+    document.getElementById("c4").style.visibility="hidden";
+
+    net_flow_eg.getElementById("s").style.stroke="green";
+    net_flow_eg.getElementById("s").style.strokeWidth="6";
+    net_flow_eg.getElementById("v1").style.stroke="green";
+    net_flow_eg.getElementById("v1").style.strokeWidth="6";
+    net_flow_eg.getElementById("v2").style.stroke="green";
+    net_flow_eg.getElementById("v2").style.strokeWidth="6";
+
+    net_flow_eg.getElementById("v3").style.stroke="blue";
+    net_flow_eg.getElementById("v3").style.strokeWidth="6";
+    net_flow_eg.getElementById("v4").style.stroke="blue";
+    net_flow_eg.getElementById("v4").style.strokeWidth="6";
+    net_flow_eg.getElementById("t").style.stroke="blue";
+    net_flow_eg.getElementById("t").style.strokeWidth="6";
+
+    net_flow_eg.getElementById("sv1").style.stroke="black";
+    net_flow_eg.getElementById("v1v3").style.stroke="blue";
+    net_flow_eg.getElementById("v2v1").style.stroke="black";
+    net_flow_eg.getElementById("v4v3").style.stroke="black";
+    net_flow_eg.getElementById("v3v2").style.stroke="green";
+    net_flow_eg.getElementById("v2v4").style.stroke="blue";
+    net_flow_eg.getElementById("v4t").style.stroke="black";
+    net_flow_eg.getElementById("sv2").style.stroke="black";
+    net_flow_eg.getElementById("v3t").style.stroke="black";
+
+    document.getElementById("c1_nf").style.visibility="visible";
+    document.getElementById("c2_nf").style.visibility="hidden";
+    document.getElementById("c3_nf").style.visibility="hidden";
+    document.getElementById("c4_nf").style.visibility="hidden";
+}
+
+document.getElementById("cut2").onclick = function(){
+    document.getElementById("c1").style.visibility="hidden";
+    document.getElementById("c2").style.visibility="visible";
+    document.getElementById("c3").style.visibility="hidden";
+    document.getElementById("c4").style.visibility="hidden";
+
+    net_flow_eg.getElementById("s").style.stroke="green";
+    net_flow_eg.getElementById("s").style.strokeWidth="6";
+    net_flow_eg.getElementById("v1").style.stroke="blue";
+    net_flow_eg.getElementById("v1").style.strokeWidth="6";
+    net_flow_eg.getElementById("v2").style.stroke="blue";
+    net_flow_eg.getElementById("v2").style.strokeWidth="6";
+
+    net_flow_eg.getElementById("v3").style.stroke="blue";
+    net_flow_eg.getElementById("v3").style.strokeWidth="6";
+    net_flow_eg.getElementById("v4").style.stroke="blue";
+    net_flow_eg.getElementById("v4").style.strokeWidth="6";
+    net_flow_eg.getElementById("t").style.stroke="blue";
+    net_flow_eg.getElementById("t").style.strokeWidth="6";
+
+    net_flow_eg.getElementById("sv1").style.stroke="green";
+    net_flow_eg.getElementById("v1v3").style.stroke="black";
+    net_flow_eg.getElementById("v2v1").style.stroke="black";
+    net_flow_eg.getElementById("v4v3").style.stroke="black";
+    net_flow_eg.getElementById("v3v2").style.stroke="black";
+    net_flow_eg.getElementById("v2v4").style.stroke="black";
+    net_flow_eg.getElementById("v4t").style.stroke="black";
+    net_flow_eg.getElementById("sv2").style.stroke="green";
+    net_flow_eg.getElementById("v3t").style.stroke="black";
+
+    document.getElementById("c1_nf").style.visibility="hidden";
+    document.getElementById("c2_nf").style.visibility="visible";
+    document.getElementById("c3_nf").style.visibility="hidden";
+document.getElementById("c4_nf").style.visibility="hidden";
+}
+
+document.getElementById("cut3").onclick = function(){
+    document.getElementById("c1").style.visibility="hidden";
+    document.getElementById("c2").style.visibility="hidden";
+    document.getElementById("c3").style.visibility="visible";
+    document.getElementById("c4").style.visibility="hidden";
+
+    net_flow_eg.getElementById("s").style.stroke="green";
+    net_flow_eg.getElementById("s").style.strokeWidth="6";
+    net_flow_eg.getElementById("v1").style.stroke="green";
+    net_flow_eg.getElementById("v1").style.strokeWidth="6";
+    net_flow_eg.getElementById("v2").style.stroke="green";
+    net_flow_eg.getElementById("v2").style.strokeWidth="6";
+
+    net_flow_eg.getElementById("v3").style.stroke="green";
+    net_flow_eg.getElementById("v3").style.strokeWidth="6";
+    net_flow_eg.getElementById("v4").style.stroke="green";
+    net_flow_eg.getElementById("v4").style.strokeWidth="6";
+    net_flow_eg.getElementById("t").style.stroke="blue";
+    net_flow_eg.getElementById("t").style.strokeWidth="6";
+
+    net_flow_eg.getElementById("sv1").style.stroke="black";
+    net_flow_eg.getElementById("v1v3").style.stroke="black";
+    net_flow_eg.getElementById("v2v1").style.stroke="black";
+    net_flow_eg.getElementById("v4v3").style.stroke="black";
+    net_flow_eg.getElementById("v3v2").style.stroke="black";
+    net_flow_eg.getElementById("v2v4").style.stroke="black";
+    net_flow_eg.getElementById("v4t").style.stroke="blue";
+    net_flow_eg.getElementById("sv2").style.stroke="black";
+    net_flow_eg.getElementById("v3t").style.stroke="blue";
+
+    document.getElementById("c1_nf").style.visibility="hidden";
+    document.getElementById("c2_nf").style.visibility="hidden";
+    document.getElementById("c3_nf").style.visibility="visible";
+    document.getElementById("c4_nf").style.visibility="hidden";
+}
+
+document.getElementById("cut4").onclick = function(){
+    document.getElementById("c1").style.visibility="hidden";
+    document.getElementById("c2").style.visibility="hidden";
+    document.getElementById("c3").style.visibility="hidden";
+    document.getElementById("c4").style.visibility="visible";
+
+    net_flow_eg.getElementById("s").style.stroke="green";
+    net_flow_eg.getElementById("s").style.strokeWidth="6";
+    net_flow_eg.getElementById("v1").style.stroke="blue";
+    net_flow_eg.getElementById("v1").style.strokeWidth="6";
+    net_flow_eg.getElementById("v2").style.stroke="green";
+    net_flow_eg.getElementById("v2").style.strokeWidth="6";
+
+    net_flow_eg.getElementById("v3").style.stroke="green";
+    net_flow_eg.getElementById("v3").style.strokeWidth="6";
+    net_flow_eg.getElementById("v4").style.stroke="blue";
+    net_flow_eg.getElementById("v4").style.strokeWidth="6";
+    net_flow_eg.getElementById("t").style.stroke="blue";
+    net_flow_eg.getElementById("t").style.strokeWidth="6";
+
+    net_flow_eg.getElementById("sv1").style.stroke="blue";
+    net_flow_eg.getElementById("v1v3").style.stroke="green";
+    net_flow_eg.getElementById("v2v1").style.stroke="blue";
+    net_flow_eg.getElementById("v4v3").style.stroke="green";
+    net_flow_eg.getElementById("v3v2").style.stroke="black";
+    net_flow_eg.getElementById("v2v4").style.stroke="blue";
+    net_flow_eg.getElementById("v4t").style.stroke="black";
+    net_flow_eg.getElementById("sv2").style.stroke="black";
+    net_flow_eg.getElementById("v3t").style.stroke="blue";
+
+    document.getElementById("c1_nf").style.visibility="hidden";
+    document.getElementById("c2_nf").style.visibility="hidden";
+    document.getElementById("c3_nf").style.visibility="hidden";
+    document.getElementById("c4_nf").style.visibility="visible";
+}
+
+document.getElementById("cut_reset").onclick = function(){
+    document.getElementById("c1").style.visibility="hidden";
+    document.getElementById("c2").style.visibility="hidden";
+    document.getElementById("c3").style.visibility="hidden";
+    document.getElementById("c4").style.visibility="hidden";
+
+    net_flow_eg.getElementById("s").style.stroke="blue";
+    net_flow_eg.getElementById("s").style.strokeWidth="1";
+    net_flow_eg.getElementById("v1").style.stroke="green";
+    net_flow_eg.getElementById("v1").style.strokeWidth="1";
+    net_flow_eg.getElementById("v2").style.stroke="green";
+    net_flow_eg.getElementById("v2").style.strokeWidth="1";
+
+    net_flow_eg.getElementById("v3").style.stroke="green";
+    net_flow_eg.getElementById("v3").style.strokeWidth="1";
+    net_flow_eg.getElementById("v4").style.stroke="green";
+    net_flow_eg.getElementById("v4").style.strokeWidth="1";
+    net_flow_eg.getElementById("t").style.stroke="blue";
+    net_flow_eg.getElementById("t").style.strokeWidth="1";
+
+    net_flow_eg.getElementById("sv1").style.stroke="black";
+    net_flow_eg.getElementById("v1v3").style.stroke="black";
+    net_flow_eg.getElementById("v2v1").style.stroke="black";
+    net_flow_eg.getElementById("v4v3").style.stroke="black";
+    net_flow_eg.getElementById("v3v2").style.stroke="black";
+    net_flow_eg.getElementById("v2v4").style.stroke="black";
+    net_flow_eg.getElementById("v4t").style.stroke="black";
+    net_flow_eg.getElementById("sv2").style.stroke="black";
+    net_flow_eg.getElementById("v3t").style.stroke="black";
+
+    document.getElementById("c1_nf").style.visibility="hidden";
+    document.getElementById("c2_nf").style.visibility="hidden";
+    document.getElementById("c3_nf").style.visibility="hidden";
+    document.getElementById("c4_nf").style.visibility="hidden";
+}
+
+
+var capacity_eg = document.getElementById("capacity_eg")
+
+document.getElementById("cut1_c").onclick = function(){
+    capacity_eg.getElementById("c1").style.visibility="visible";
+    capacity_eg.getElementById("c2").style.visibility="hidden";
+    capacity_eg.getElementById("c3").style.visibility="hidden";
+    capacity_eg.getElementById("c4").style.visibility="hidden";
+
+    capacity_eg.getElementById("s").style.stroke="green";
+    capacity_eg.getElementById("s").style.strokeWidth="6";
+    capacity_eg.getElementById("v1").style.stroke="green";
+    capacity_eg.getElementById("v1").style.strokeWidth="6";
+    capacity_eg.getElementById("v2").style.stroke="green";
+    capacity_eg.getElementById("v2").style.strokeWidth="6";
+
+    capacity_eg.getElementById("v3").style.stroke="blue";
+    capacity_eg.getElementById("v3").style.strokeWidth="6";
+    capacity_eg.getElementById("v4").style.stroke="blue";
+    capacity_eg.getElementById("v4").style.strokeWidth="6";
+    capacity_eg.getElementById("t").style.stroke="blue";
+    capacity_eg.getElementById("t").style.strokeWidth="6";
+
+    capacity_eg.getElementById("sv1").style.stroke="black";
+    capacity_eg.getElementById("v1v3").style.stroke="blue";
+    capacity_eg.getElementById("v2v1").style.stroke="black";
+    capacity_eg.getElementById("v4v3").style.stroke="black";
+    capacity_eg.getElementById("v3v2").style.stroke="green";
+    capacity_eg.getElementById("v2v4").style.stroke="blue";
+    capacity_eg.getElementById("v4t").style.stroke="black";
+    capacity_eg.getElementById("sv2").style.stroke="black";
+    capacity_eg.getElementById("v3t").style.stroke="black";
+
+    document.getElementById("c1_capa").style.visibility="visible";
+    document.getElementById("c2_capa").style.visibility="hidden";
+    document.getElementById("c3_capa").style.visibility="hidden";
+    document.getElementById("c4_capa").style.visibility="hidden";
+}
+
+document.getElementById("cut2_c").onclick = function(){
+    capacity_eg.getElementById("c1").style.visibility="hidden";
+    capacity_eg.getElementById("c2").style.visibility="visible";
+    capacity_eg.getElementById("c3").style.visibility="hidden";
+    capacity_eg.getElementById("c4").style.visibility="hidden";
+
+    capacity_eg.getElementById("s").style.stroke="green";
+    capacity_eg.getElementById("s").style.strokeWidth="6";
+    capacity_eg.getElementById("v1").style.stroke="blue";
+    capacity_eg.getElementById("v1").style.strokeWidth="6";
+    capacity_eg.getElementById("v2").style.stroke="blue";
+    capacity_eg.getElementById("v2").style.strokeWidth="6";
+
+    capacity_eg.getElementById("v3").style.stroke="blue";
+    capacity_eg.getElementById("v3").style.strokeWidth="6";
+    capacity_eg.getElementById("v4").style.stroke="blue";
+    capacity_eg.getElementById("v4").style.strokeWidth="6";
+    capacity_eg.getElementById("t").style.stroke="blue";
+    capacity_eg.getElementById("t").style.strokeWidth="6";
+
+    capacity_eg.getElementById("sv1").style.stroke="green";
+    capacity_eg.getElementById("v1v3").style.stroke="black";
+    capacity_eg.getElementById("v2v1").style.stroke="black";
+    capacity_eg.getElementById("v4v3").style.stroke="black";
+    capacity_eg.getElementById("v3v2").style.stroke="black";
+    capacity_eg.getElementById("v2v4").style.stroke="black";
+    capacity_eg.getElementById("v4t").style.stroke="black";
+    capacity_eg.getElementById("sv2").style.stroke="green";
+    capacity_eg.getElementById("v3t").style.stroke="black";
+
+    document.getElementById("c1_capa").style.visibility="hidden";
+    document.getElementById("c2_capa").style.visibility="visible";
+    document.getElementById("c3_capa").style.visibility="hidden";
+    document.getElementById("c4_capa").style.visibility="hidden";
+}
+
+document.getElementById("cut3_c").onclick = function(){
+    capacity_eg.getElementById("c1").style.visibility="hidden";
+    capacity_eg.getElementById("c2").style.visibility="hidden";
+    capacity_eg.getElementById("c3").style.visibility="visible";
+    capacity_eg.getElementById("c4").style.visibility="hidden";
+
+    capacity_eg.getElementById("s").style.stroke="green";
+    capacity_eg.getElementById("s").style.strokeWidth="6";
+    capacity_eg.getElementById("v1").style.stroke="green";
+    capacity_eg.getElementById("v1").style.strokeWidth="6";
+    capacity_eg.getElementById("v2").style.stroke="green";
+    capacity_eg.getElementById("v2").style.strokeWidth="6";
+
+    capacity_eg.getElementById("v3").style.stroke="green";
+    capacity_eg.getElementById("v3").style.strokeWidth="6";
+    capacity_eg.getElementById("v4").style.stroke="green";
+    capacity_eg.getElementById("v4").style.strokeWidth="6";
+    capacity_eg.getElementById("t").style.stroke="blue";
+    capacity_eg.getElementById("t").style.strokeWidth="6";
+
+    capacity_eg.getElementById("sv1").style.stroke="black";
+    capacity_eg.getElementById("v1v3").style.stroke="black";
+    capacity_eg.getElementById("v2v1").style.stroke="black";
+    capacity_eg.getElementById("v4v3").style.stroke="black";
+    capacity_eg.getElementById("v3v2").style.stroke="black";
+    capacity_eg.getElementById("v2v4").style.stroke="black";
+    capacity_eg.getElementById("v4t").style.stroke="blue";
+    capacity_eg.getElementById("sv2").style.stroke="black";
+    capacity_eg.getElementById("v3t").style.stroke="blue";
+
+    document.getElementById("c1_capa").style.visibility="hidden";
+    document.getElementById("c2_capa").style.visibility="hidden";
+    document.getElementById("c3_capa").style.visibility="visible";
+    document.getElementById("c4_capa").style.visibility="hidden";
+}
+
+document.getElementById("cut4_c").onclick = function(){
+    capacity_eg.getElementById("c1").style.visibility="hidden";
+    capacity_eg.getElementById("c2").style.visibility="hidden";
+    capacity_eg.getElementById("c3").style.visibility="hidden";
+    capacity_eg.getElementById("c4").style.visibility="visible";
+
+    capacity_eg.getElementById("s").style.stroke="green";
+    capacity_eg.getElementById("s").style.strokeWidth="6";
+    capacity_eg.getElementById("v1").style.stroke="blue";
+    capacity_eg.getElementById("v1").style.strokeWidth="6";
+    capacity_eg.getElementById("v2").style.stroke="green";
+    capacity_eg.getElementById("v2").style.strokeWidth="6";
+
+    capacity_eg.getElementById("v3").style.stroke="green";
+    capacity_eg.getElementById("v3").style.strokeWidth="6";
+    capacity_eg.getElementById("v4").style.stroke="blue";
+    capacity_eg.getElementById("v4").style.strokeWidth="6";
+    capacity_eg.getElementById("t").style.stroke="blue";
+    capacity_eg.getElementById("t").style.strokeWidth="6";
+
+    capacity_eg.getElementById("sv1").style.stroke="blue";
+    capacity_eg.getElementById("v1v3").style.stroke="green";
+    capacity_eg.getElementById("v2v1").style.stroke="blue";
+    capacity_eg.getElementById("v4v3").style.stroke="green";
+    capacity_eg.getElementById("v3v2").style.stroke="black";
+    capacity_eg.getElementById("v2v4").style.stroke="blue";
+    capacity_eg.getElementById("v4t").style.stroke="black";
+    capacity_eg.getElementById("sv2").style.stroke="black";
+    capacity_eg.getElementById("v3t").style.stroke="blue";
+
+    document.getElementById("c1_capa").style.visibility="hidden";
+    document.getElementById("c2_capa").style.visibility="hidden";
+    document.getElementById("c3_capa").style.visibility="hidden";
+    document.getElementById("c4_capa").style.visibility="visible";
+}
+
+document.getElementById("cut_reset_c").onclick = function(){
+    capacity_eg.getElementById("c1").style.visibility="hidden";
+    capacity_eg.getElementById("c2").style.visibility="hidden";
+    capacity_eg.getElementById("c3").style.visibility="hidden";
+    capacity_eg.getElementById("c4").style.visibility="hidden";
+
+    capacity_eg.getElementById("s").style.stroke="blue";
+    capacity_eg.getElementById("s").style.strokeWidth="1";
+    capacity_eg.getElementById("v1").style.stroke="green";
+    capacity_eg.getElementById("v1").style.strokeWidth="1";
+    capacity_eg.getElementById("v2").style.stroke="green";
+    capacity_eg.getElementById("v2").style.strokeWidth="1";
+
+    capacity_eg.getElementById("v3").style.stroke="green";
+    capacity_eg.getElementById("v3").style.strokeWidth="1";
+    capacity_eg.getElementById("v4").style.stroke="green";
+    capacity_eg.getElementById("v4").style.strokeWidth="1";
+    capacity_eg.getElementById("t").style.stroke="blue";
+    capacity_eg.getElementById("t").style.strokeWidth="1";
+
+    capacity_eg.getElementById("sv1").style.stroke="black";
+    capacity_eg.getElementById("v1v3").style.stroke="black";
+    capacity_eg.getElementById("v2v1").style.stroke="black";
+    capacity_eg.getElementById("v4v3").style.stroke="black";
+    capacity_eg.getElementById("v3v2").style.stroke="black";
+    capacity_eg.getElementById("v2v4").style.stroke="black";
+    capacity_eg.getElementById("v4t").style.stroke="black";
+    capacity_eg.getElementById("sv2").style.stroke="black";
+    capacity_eg.getElementById("v3t").style.stroke="black";
+
+    document.getElementById("c1_capa").style.visibility="hidden";
+    document.getElementById("c2_capa").style.visibility="hidden";
+    document.getElementById("c3_capa").style.visibility="hidden";
+    document.getElementById("c4_capa").style.visibility="hidden";
+}
 
