@@ -37,7 +37,7 @@
         <ul>
             <li>Don't send anything back in a loop - that takes capacity</li>
             
-            <li>Don't send anything back in a loop - that takes capacity</li>
+            <li>If there exist any path that we can fill in more capacity - fill more</li>
         </ul>
     </div>
 </div>
@@ -48,9 +48,66 @@
         <p>&nbsp &nbsp &nbsp Residual Network</p>
     </div>
     <div class="content" id="res_con">
-        <p>residual network definition</p>
-        <p>residual network example with graph</p>
-        <p>augmentation</p>
+        <p><b>Residual Network Introduction:</b>
+        Represent how we can change flow in on the edges of G, notation G<sub>f</sub> </p>
+        <p> <b>How much can we change on the flow?</b></p>
+       <p> &nbsp &nbsp &nbsp - Send more on this edge? The possible amount to send more is based on current flow but not exceed current capacity</p>
+       <p> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp c<sub>f</sub>(u,v) = c(u,v) - f(u,v)</p>
+       <p> &nbsp &nbsp &nbsp - When already sent some flow, what about send less(similar to send the flow back)?</p>
+       <p> &nbsp &nbsp &nbsp &nbsp &nbsp The amount we can send back is same as current flow, in reversed direction.</p>
+       <p> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp c<sub>f</sub>(v,u) = f(u,v)</p>
+       <p> &nbsp &nbsp &nbsp - Otherwise when there's no edge in G, there's also no change of flow</p>
+
+       <p><b>Residual Network definition:</b> </p>
+       <p> &nbsp &nbsp &nbsp Given a flow network G=(V,E) and a flow f. The residual network of G induced by f is G<sub>f</sub>=(V, E<sub>f</sub>), where</p>
+
+       <p> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp E<sub>f</sub> = { 
+           <span id="edges">(u,v) &isin; V x V: </span>
+            <span id="change">    c<sub>f</sub> > 0  </span>
+            }
+            &nbsp &nbsp &nbsp (Click to see explaination of each part)</p> 
+
+        <p>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            <span id="edges_hint" style="visibility:hidden;">The edges in this residual graph are: </span>
+            <span id="change_hint" style="visibility:hidden;">All possible changes in flow as seen above</span></p>
+
+
+        <p><b>Build a residual network here:</b></p>
+
+        <p><b>Augmentation:</b> A flow in rsidual network G<sub>f</sub>is a hint for adding flow in G</p>
+        <p>If f is a flow in G and f' is a flow in G<sub>f</sub>, we define augmentation:</p>
+        <p> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp (f &uarr; f') =
+            <span id="send">f(u,v) </span> 
+            <span id="sendmore"> + f'(u,v) </span>
+             <span id="sendback"> - f'(v,u) </span>
+             &nbsp &nbsp &nbsp (Click to see explaination of each part)</p> 
+
+             <p>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                <span id="send_hint" style="visibility:hidden;">The amount we already sent in flow f from u to v</span>
+                <span id="sendmore_hint" style="visibility:hidden;">The amount we send more in f' from u to v</span>
+                <span id="sendback_hint" style="visibility:hidden;">The amount we send back in f' from v to u</span>
+            </p>
+
+        <p><b>Augmenting Path</b>: A simple path from s to t in the residual network in G<sub>f</sub> </p>
+        <p><b>Residual Capacity</b>: The maximum amount by which we can increase the flow on each edge in an augmenting 
+        path p.</p>
+
+        <p> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp c<sub>f</sub>(p) =
+            <span id="min">min</span> 
+            <span id="resedges"> { c<sub>f</sub>(u, v): (u, v) is on p } </span>
+             &nbsp &nbsp &nbsp (Click to see explaination of each part)</p> 
+
+        <p>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            <span id="min_hint" style="visibility:hidden;">The maximum amount we can increase without violating anything 
+                on this path is to incerase it by smallest residual value of all edges</span>
+            <span id="resedges_hint" style="visibility:hidden;">All the edges on path</span>
+        </p>
+
+
+
+
+
+
     </div>
 </div>
 
@@ -81,7 +138,7 @@
   <p>Yuye.Jiang@tufts.edu  &nbsp &nbsp &nbsp  Comp150-ALG-Summer2020</p>
 </div>
 
-<script src="popup_con.js"></script>
+<script src="concept.js"></script>
 
 </body>
 </html>

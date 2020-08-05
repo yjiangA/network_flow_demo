@@ -81,9 +81,8 @@ body{
 }
 
 .content svg {
-    margin-left:300px;
+    margin-left:20px;
 }
-
 
 
 button {
@@ -105,7 +104,7 @@ button {
 .flow {
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;
-    animation: dash 20s linear forwards;
+    animation: dash 15s linear forwards;
 }
     
 @keyframes dash {

@@ -35,87 +35,132 @@
     <div class="content" id="problem_intro_con">
         <a href="https://en.wikipedia.org/wiki/Flow_network">wikipedia</a>
         
-        <ul>
-            <li><b>Graph:</b> 
+            <p><b>Graph:</b> 
                 A directed graph G(V,E)
-            </li>
+            </p>
             
-            <li><b>Supply & Target:</b> 
+            <p><b>Supply & Target:</b> 
                 supply(S) and a target(T), want to send from supply to target, 
                 there can be infinite supply avaliable.
-            </li>
+            </p>
             
-            <li><b>Capacity:</b> Each edge have some capacity c(x,y)
+            <p><b>Capacity:</b> Each edge have some capacity c(x,y)
                 <button id="eg_capacity">example capacity</button>
-            </li>
+            </p>
             
-            <li><b>Flow:</b> The actual amount we send is called flow f(x,y).
+            <p><b>Flow:</b> The actual amount we send is called flow f(x,y).
                  And it cannot exceed capacity. 0 &le; c(x,y) &le; f(x,y).
                 <button id="eg_flow">example flow value</button> 
                 <button id="flow_anime">see flow animation</button>
                 <button id="flow_reset">reset</button> 
-            </li>
+            </p>
 
-            <li><b>Flow Conservation:</b> For each node that is not supply or target, the incoming flow is equal to
+            <p><b>Flow Conservation:</b> For each node that is not supply or target, the incoming flow is equal to
                 outcoming flow.
-                <button>see animation</button> 
-            </li>
+                <button id="v1_anime">sum of v1</button> 
+                <button id="v2_anime">sum of v2</button> 
+                <button id="v3_anime">sum of v3</button> 
+                <button id="v4_anime">sum of v4</button> 
+                <button id="reset_anime">reset</button> 
+            </p>
 
-            <li><b>Output:</b> Compute flow on each edge such that we have maximum flow coming to target.
-            </li>
+            <p><b>Output:</b> Compute flow on each edge such that we have maximum flow coming to target.
+                <button id="final_sum">see final sum</button>
+                <button id="final_sum_reset">reset</button> 
+            </p>
+
+   <div class = "sum_num" style="color: red; float: left">
+      <p id="v1_sum" style="visibility: hidden">11 + 1 = 12</p>
+      <p id="v2_sum" style="visibility: hidden">8 + 4 = 11 + 1</p>
+      <p id="v3_sum" style="visibility: hidden">12 + 7 = 15 + 4</p>
+      <p id="v4_sum" style="visibility: hidden">11 = 7 + 4 </p>
+      <p id="t_sum" style="visibility: hidden">4 + 15 = 19 </p>
+   </div>
 
 
-        </ul>
-
-
-
-
-        <svg id="problem" width="800" height= "350">
+    
+        <svg id="problem" width="800" height="350">
             <defs>
-                <marker id="arrow" 
-                        markerUnits="strokeWidth" 
-                        markerWidth="12" 
-                        markerHeight="12" 
-                        viewBox="0 0 12 12" 
-                        refX="6" 
-                        refY="6" 
+                <marker id="arrow"
+                        markerUnits="strokeWidth"
+                        markerWidth="12"
+                        markerHeight="12"
+                        viewBox="0 0 12 12"
+                        refX="6"
+                        refY="6"
                         orient="auto">
-                        <path d="M2,2 L10,6 L2,10 L6,6 L2,2" style="fill:black" />
+                    <path d="M2,2 L10,6 L2,10 L6,6 L2,2" style="fill:black" />
                 </marker>
-                </defs>
-            
+            </defs>
+
             <g>
-            <line x1="30" y1="150" x2="140" y2="75"  stroke="black" stroke-width="4" marker-end="url(#arrow)"/>
-            <line x1="170" y1="50" x2="300" y2="50"  stroke="black" stroke-width="4" marker-end="url(#arrow)"/>
+                <line id="sv1" x1="30" y1="165" x2="190.2" y2="58" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id="v1v3" x1="200" y1="35" x2="454" y2="35" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id="v3v2" x1="520" y1="15" x2="262.5" y2="282.5" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v2v4" x1="200" y1="315" x2="454" y2="315" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v4t" x1="500" y1="315" x2="665" y2="195" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "sv2" x1="30" y1="165" x2="190.2" y2="292" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v2v1" x1="230" y1="315" x2="230" y2="81" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v4v3" x1="500" y1="315" x2="500" y2="81" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v3t" x1="500" y1="35" x2="662" y2="140" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
             </g>
 
             <g class="flow_demo" style="display:none">
-                <line class="flow" x1="30" y1="150" x2="140" y2="75"  stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none"/>
-                <line class="flow" x1="170" y1="50" x2="300" y2="50"  stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none"/>
-            </g>>
+                <line class="flow" id="sv1_f" x1="30" y1="165" x2="190.2" y2="58" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id="v1v3_f" x1="200" y1="35" x2="454" y2="35" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id="v3v2_f" x1="520" y1="15" x2="262.5" y2="282.5" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "v2v4_f" x1="200" y1="315" x2="454" y2="315" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "v4t_f" x1="500" y1="315" x2="665" y2="195" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "sv2_f" x1="30" y1="165" x2="190.2" y2="292" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "v2v1_f" x1="230" y1="315" x2="230" y2="81" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "v4v3_f" x1="500" y1="315" x2="500" y2="81" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+                <line class="flow" id= "v3t_f" x1="500" y1="35" x2="662" y2="140" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none" />
+            </g>
 
-            <g>
-            <circle id="s" cx="30" cy="150" r="30" style="fill:lightblue; stroke:blue"/>
-            <circle id="v1" cx="170" cy="50" r="30" style="fill:lightgreen; stroke:green"/>
-            <circle id="v2" cx="170" cy="270" r="30" style="fill:lightgreen; stroke:green"/>
-            <circle id="v3" cx="350" cy="50" r="30" style="fill:lightgreen; stroke:green"/>
-            <circle id="v4" cx="350" cy="270" r="30" style="fill:lightgreen; stroke:green"/>
-            <circle id="t" cx="490" cy="150" r="30" style="fill:lightblue; stroke:blue"/>
+            <g class="nodes">
+                <circle id="s" cx="30" cy="165" r="30" style="fill:lightblue; stroke:blue" />
+                <circle id="v1" cx="230" cy="35" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="v2" cx="230" cy="315" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="v3" cx="500" cy="35" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="v4" cx="500" cy="315" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="t" cx="700" cy="165" r="30" style="fill:lightblue; stroke:blue" />
             </g>
 
             <g>
-            <text id="stext" x="30" y="150">S</text>
+                <text id="stext" x="25" y="170">S</text>
+                <text id="stext" x="220" y="40">V1</text>
+                <text id="stext" x="220" y="320">V2</text>
+                <text id="stext" x="490" y="40">V3</text>
+                <text id="stext" x="490" y="320">V4</text>
+                <text id="stext" x="690" y="170">T</text>
             </g>
 
             <g class="capacity_value" style="display: none;">
-            <text id="sv1_cap" x="70" y="100">16</text>
+                <text id="sv1_cap" x="85" y="105">16</text>
+                <text id="sv1_cap" x="345" y="25">12</text>
+                <text id="sv1_cap" x="350" y="170">9</text>
+                <text id="sv1_cap" x="345" y="305">14</text>
+                <text id="sv1_cap" x="565" y="245">4</text>
+                <text id="sv1_cap" x="110" y="225">13</text>
+                <text id="sv1_cap" x="213" y="180">4</text>
+                <text id="sv1_cap" x="483" y="180">7</text>
+                <text id="sv1_cap" x="585" y="95">20</text>
             </g>
 
             <g class="flow_value" style="display: none;">
-                <text id="sv1_flow" x="60" y="90">11/16</text>
-                </g>
+                <text id="sv1_flow_v" x="65" y="100">11/16</text>
+                <text id="v1v3_flow_v" x="345" y="25">12/12</text>
+                <text id="v3v2_flow_v" x="340" y="165">4/9</text>
+                <text id="v2v4_flow_v" x="345" y="305">11/14</text>
+                <text id="v4t_flow_v" x="565" y="242">4/4</text>
+                <text id="sv2_flow_v" x="110" y="225">8/13</text>
+                <text id="v2v1_flow_v" x="195" y="180">1/4</text>
+                <text id="v4v3_flow_v" x="470" y="180">7/7</text>
+                <text id="v3t_flow_v" x="585" y="85">15/20</text>
+            </g>
 
         </svg>
+
     </div>
 </div>
 
@@ -126,7 +171,7 @@
   <p>Yuye.Jiang@tufts.edu  &nbsp &nbsp &nbsp  Comp150-ALG-Summer2020</p>
 </div>
 
-<script src="index.js"></script>
+<script src="./js/index.js"></script>
 
 </body>
 </html>
