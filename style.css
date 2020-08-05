@@ -66,7 +66,7 @@ body{
     margin: 10px auto, 20px, auto;
     padding: 5px 5px 5px 0;
     display: block;
-    height:170px;
+    /* height:170px; */
     width:1200px;
     background-color:lightgray;
     font-size: 18px;
@@ -80,15 +80,10 @@ body{
     margin-left:10px;
 }
 
-
-
-#problem_intro_sec{
-    height:300px;
+.content svg {
+    margin-left:300px;
 }
 
-#problem_intro_con{
-    height:220px;
-}
 
 
 button {
@@ -104,4 +99,17 @@ button {
     background-color: black;
     color: white;
     text-align: center;
+}
+
+
+.flow {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 20s linear forwards;
+}
+    
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
 }

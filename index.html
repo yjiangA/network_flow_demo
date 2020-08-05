@@ -2,11 +2,9 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Test demo</title>
+    <title>Networkflow - Introduction</title>
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-    <script src="index.js"></script>
 </head>
-
 
 
 <body>
@@ -36,25 +34,99 @@
     </div>
     <div class="content" id="problem_intro_con">
         <a href="https://en.wikipedia.org/wiki/Flow_network">wikipedia</a>
-        <p>Introduction to the problem</p>
+        
+        <ul>
+            <li><b>Graph:</b> 
+                A directed graph G(V,E)
+            </li>
+            
+            <li><b>Supply & Target:</b> 
+                supply(S) and a target(T), want to send from supply to target, 
+                there can be infinite supply avaliable.
+            </li>
+            
+            <li><b>Capacity:</b> Each edge have some capacity c(x,y)
+                <button id="eg_capacity">example capacity</button>
+            </li>
+            
+            <li><b>Flow:</b> The actual amount we send is called flow f(x,y).
+                 And it cannot exceed capacity. 0 &le; c(x,y) &le; f(x,y).
+                <button id="eg_flow">example flow value</button> 
+                <button id="flow_anime">see flow animation</button>
+                <button id="flow_reset">reset</button> 
+            </li>
+
+            <li><b>Flow Conservation:</b> For each node that is not supply or target, the incoming flow is equal to
+                outcoming flow.
+                <button>see animation</button> 
+            </li>
+
+            <li><b>Output:</b> Compute flow on each edge such that we have maximum flow coming to target.
+            </li>
+
+
+        </ul>
+
+
+
+
+        <svg id="problem" width="800" height= "350">
+            <defs>
+                <marker id="arrow" 
+                        markerUnits="strokeWidth" 
+                        markerWidth="12" 
+                        markerHeight="12" 
+                        viewBox="0 0 12 12" 
+                        refX="6" 
+                        refY="6" 
+                        orient="auto">
+                        <path d="M2,2 L10,6 L2,10 L6,6 L2,2" style="fill:black" />
+                </marker>
+                </defs>
+            
+            <g>
+            <line x1="30" y1="150" x2="140" y2="75"  stroke="black" stroke-width="4" marker-end="url(#arrow)"/>
+            <line x1="170" y1="50" x2="300" y2="50"  stroke="black" stroke-width="4" marker-end="url(#arrow)"/>
+            </g>
+
+            <g class="flow_demo" style="display:none">
+                <line class="flow" x1="30" y1="150" x2="140" y2="75"  stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none"/>
+                <line class="flow" x1="170" y1="50" x2="300" y2="50"  stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="display:none"/>
+            </g>>
+
+            <g>
+            <circle id="s" cx="30" cy="150" r="30" style="fill:lightblue; stroke:blue"/>
+            <circle id="v1" cx="170" cy="50" r="30" style="fill:lightgreen; stroke:green"/>
+            <circle id="v2" cx="170" cy="270" r="30" style="fill:lightgreen; stroke:green"/>
+            <circle id="v3" cx="350" cy="50" r="30" style="fill:lightgreen; stroke:green"/>
+            <circle id="v4" cx="350" cy="270" r="30" style="fill:lightgreen; stroke:green"/>
+            <circle id="t" cx="490" cy="150" r="30" style="fill:lightblue; stroke:blue"/>
+            </g>
+
+            <g>
+            <text id="stext" x="30" y="150">S</text>
+            </g>
+
+            <g class="capacity_value" style="display: none;">
+            <text id="sv1_cap" x="70" y="100">16</text>
+            </g>
+
+            <g class="flow_value" style="display: none;">
+                <text id="sv1_flow" x="60" y="90">11/16</text>
+                </g>
+
+        </svg>
     </div>
 </div>
 
-
-<div class="section" id="input_sec">
-    <div class="sec_title">
-        <p>&nbsp &nbsp &nbsp Input and Output</p>
-    </div>
-    <div class="content" id="input_con">
-        <p>Input and Output</p>
-    </div>
-</div>
 
 
 
 <div class="bottom">
   <p>Yuye.Jiang@tufts.edu  &nbsp &nbsp &nbsp  Comp150-ALG-Summer2020</p>
 </div>
+
+<script src="index.js"></script>
 
 </body>
 </html>
