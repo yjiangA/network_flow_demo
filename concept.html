@@ -542,7 +542,137 @@
         <p> &nbsp &nbsp &nbsp 1. f is a maximum flow in G</p>
         <p> &nbsp &nbsp &nbsp 2. The residual network G<sub>f</sub> contains no augmenting paths.</p>
         <p> &nbsp &nbsp &nbsp 3. |f| = c(S,T) for some cut(S,T) of G.</p>
-        <p>Proof, click pop up windows can show corollary<button id="coro26.3">WHY?</button></p>
+
+        <p><b>Proof: 1 &rArr; 2</b></p>
+        <p> &nbsp &nbsp &nbsp 
+            Suppose for the sake of contradiction that f is maximum flow in G, but G<sub>f</sub> has an augmenting path p.</p>
+        
+            <p> &nbsp &nbsp &nbsp
+            Then, by Corollary 26.3<button id="coro26.3">WHY?</button>, if we augment f by f<sub>p</sub> we
+            can get a flow |f &uarr; f<sub>p</sub>| strictly greater than |f|</p>
+
+            <p> &nbsp &nbsp &nbsp
+                That contradicts the the assumption that f is a maximum flow</p> 
+
+        <p><b>Proof: 2 (No augmenting path) &rArr; 3 (Flow = capacity of some cut)</b></p>
+        <p> &nbsp &nbsp &nbsp 
+            Suppose G<sub>f</sub> has no augmenting path, that is same as G<sub>f</sub> contains no path from s to t.</p>
+        
+            <p> &nbsp &nbsp &nbsp
+            Define  S={ v &isin; V: there exist a path from s to v in G<sub>f</sub> }</p>
+            
+            <p> &nbsp &nbsp &nbsp
+                And T - V - S, that is the vertices for which there's no path from s to them</p> 
+
+            <p> &nbsp &nbsp &nbsp
+                This partition must be a cut, since we already know there's no path from s to t thus t is in set T.</p> 
+
+            <p> &nbsp &nbsp &nbsp
+                Consider a pair of vertices u &isin; S and v &isin; T.</p> 
+
+                
+            <p> &nbsp &nbsp &nbsp
+                If there's an edge from u to v, we must have f(u,v) = c(u,v)</p>
+
+            <p> &nbsp &nbsp &nbsp &nbsp
+                Because if we have f(u, v) &le; c(u, v), this flow can possibly be raised </p>
+                
+            <p> &nbsp &nbsp &nbsp &nbsp
+                If it is possible to raise it, then there's an edge c<sub>f</sub> from u to v = c(u,v) - f(u,v) </p>
+
+            <p> &nbsp &nbsp &nbsp &nbsp
+                In this way v is reachabel from u, which means v is reachable from s, and v should be in set S, <br>
+                &nbsp &nbsp &nbsp &nbsp which contradicts the assumption that v is in T </p>
+
+            <svg width="1000" height="200">
+                <defs>
+                    <marker id="arrow"
+                            markerUnits="strokeWidth"
+                            markerWidth="12"
+                            markerHeight="12"
+                            viewBox="0 0 12 12"
+                            refX="6"
+                            refY="6"
+                            orient="auto">
+                        <path d="M2,2 L10,6 L2,10 L6,6 L2,2" style="fill:black" />
+                    </marker>
+                </defs>
+
+                <circle id="eg_s" cx="100" cy="100" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="eg_u" cx="300" cy="100" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="eg_v" cx="500" cy="100" r="30" style="fill:lightblue; stroke:blue" />
+                <circle id="eg_t" cx="700" cy="100" r="30" style="fill:lightblue; stroke:blue" />
+
+                <line id="eg_su" x1="130" y1="100" x2="255" y2="100" stroke="black" stroke-width="4" marker-end="url(#arrow)"
+                stroke-dasharray="10" stroke-dashoffset="5" />
+                <line id="eg_uv" x1="320" y1="80" x2="460" y2="80" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id="eg_vu" x1="480" y1="120" x2="340" y2="120" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+            
+                <text x="95" y="105">S</text>
+                <text x="295" y="105">U</text>
+                <text x="495" y="105">V</text>
+                <text x="695" y="105">T</text>
+            
+            </svg>
+
+            <p> &nbsp &nbsp &nbsp
+                If there's an edge from v to u, we must have f(v,u) = 0</p>
+
+            <p> &nbsp &nbsp &nbsp &nbsp
+                Because if we have f(u, v) &NotEqual;; 0, it is possible to send flow back from u to v in c<sub>f</sub></p>
+                
+            <p> &nbsp &nbsp &nbsp &nbsp
+                Same idea, in this way v is reachable from s. </p>
+            
+            <p> &nbsp &nbsp &nbsp
+                Thus we have: </p>
+            
+            <p> &nbsp &nbsp &nbsp f(S,T) = 
+                <span id="nf_def">&sum; <sub> u &isin; S </sub>
+                &sum; <sub> v &isin; T </sub>
+                f(u,v)
+                &nbsp - &nbsp
+                &sum; <sub> u &isin; S </sub>
+                &sum; <sub> v &isin; T </sub>
+                f(v,u)</span>
+                </p>
+
+        <p> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            <span id= "nf_def_hint" style="visibility:hidden;">Network flow definition</span>
+        </p>
+
+        <p> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  = 
+            <span id="uv_sum">&sum; <sub> u &isin; S </sub>
+            &sum; <sub> v &isin; T </sub>
+            c(u,v)</span>
+            &nbsp - &nbsp
+            <span id="vu_sum">&sum; <sub> u &isin; S </sub>
+            &sum; <sub> v &isin; T </sub>
+            0</span>
+        </p>
+
+        <p> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            <span id= "uv_sum_hint" style="visibility:hidden;">We just proved f(u,v) = c(u,v)</span>
+            <span id= "vu_sum_hint" style="visibility:hidden;">We proved f(v,u) = 0</span>
+        </p>
+        
+        <p> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  = 
+            <span id="c_def">c(S, T)</span>
+        </p>
+
+        <p> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+            <span id= "c_def_hint" style="visibility:hidden;">By definition of cut</span>
+        </p>
+
+        <p> &nbsp &nbsp &nbsp
+            Then, by Lemma 26.4<button id="coro26.4">WHY?</button>, |f| = f(S,T) = c(S,T)</p>
+
+        <p><b>Proof: 3 (Flow = capacity of some cut) &rArr; 1 (Is a max flow)</b></p>
+        <p> &nbsp &nbsp &nbsp 
+            By by Corollary 26.5<button id="coro26.4">WHY?</button> 
+         |f| &leq; c(S, T) for all cuts (S, T). 
+        The condition |f| = c(S, T) implies that f is a maximum flow.</p>
+
     </div>
 </div>
 

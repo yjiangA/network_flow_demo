@@ -1,5 +1,6 @@
 var texts = ["edges", "change", "send", "sendmore", "sendback", "min", "resedges",
-"uins1", "uins2", "vint1", "vint2", "fuv", "fvu", "uins3", "vint3", "cuv"]
+"uins1", "uins2", "vint1", "vint2", "fuv", "fvu", "uins3", "vint3", "cuv",
+"nf_def", "uv_sum", "vu_sum", "c_def"]
 
 
 for(item in texts){
