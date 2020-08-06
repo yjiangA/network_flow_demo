@@ -64,6 +64,12 @@
                 <button id="reset_anime">reset</button> 
             </p>
 
+            <p><b>Value: </b> The value |f| of a flow f is defined as:
+            </p>
+            <p>&nbsp; &nbsp; &nbsp; |f| = &sum;<sub>v in V</sub> f(s,v) - &sum;<sub>v in V</sub> f(v,v)</p>
+            <p>&nbsp; &nbsp; &nbsp; That is the total flow out of source - the total flow into sourece</p>
+            <p>&nbsp; &nbsp; &nbsp; It is trivial that we want to minimize the flow going back to source.</p>
+
             <p><b>Output:</b> Compute flow on each edge such that we have maximum flow coming to target.
                 <button id="final_sum">see final sum</button>
                 <button id="final_sum_reset">reset</button> 
