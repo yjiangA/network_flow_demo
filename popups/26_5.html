@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Corollary 26.5</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../style.css" />
+</head>
+
+<body>
+
+<h1> Corollary 26.5</h1>
+
+ <div class="section" >
+    <div class="sec_title">
+        <p>&nbsp &nbsp &nbsp Content</p>
+    </div>
+    <div class="content">
+        <p>Let G(V,E) be a flow network with source s and sink t, and let f be a flow in G.</p>
+        <p>|f| is bounded from above by any c(S,T)</p>
+    </div>
+</div>
+
+<div class="section" >
+    <div class="sec_title">
+        <p>&nbsp &nbsp &nbsp Lemma 26.4</p>
+    </div>
+    <div class="content">
+        <p>Let G(V,E) be a flow network with source s and sink t, and let f be a flow in G.</p>
+        <p>Let (S,T) be any cut of G. Then the netflow across (S,T) is f(S,T) = |f|</p>
+        <button id="26_4">See proof</button>
+    </div>
+</div>
+
+
+<div class="section" >
+    <div class="sec_title">
+        <p>&nbsp &nbsp &nbsp Proof</p>
+    </div>
+    <div class="content">
+
+        <p>By lemma 26.4, |f| = f(S,T)</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 
+            <span id="1">&sum; <sub>u &isin; S</sub> &sum; <sub>v &isin; T</sub> f(u,v) 
+                -  &sum; <sub>u &isin; S</sub> &sum; <sub>v &isin; T</sub> f(v,u)</span> 
+            <span id="1_hint" style="visibility:hidden;">By definition of net flow</span></p>
+
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &leq;
+            <span id="2">&sum; <sub>u &isin; S</sub> &sum; <sub>v &isin; T</sub> f(u,v) </span> 
+            <span id="2_hint" style="visibility:hidden;">Cancell the 2nd term since the sum of flow value &geq; 0</span>
+        </p>
+
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &leq;
+            <span id="3">&sum; <sub>u &isin; S</sub> &sum; <sub>v &isin; T</sub> c(u,v) </span> 
+            <span id="3_hint" style="visibility:hidden;">Since the flow is bounded by capacity</span>
+        </p>
+
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; =
+            <span id="4">c(S,T) </span> 
+            <span id="4_hint" style="visibility:hidden;">By definition of capacity of cut</span>
+        </p>
+        
+    </div>
+</div>
+
+<script src="../js/26_5.js"></script>
+
+</body>
+</html>

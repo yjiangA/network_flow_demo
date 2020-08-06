@@ -425,7 +425,7 @@ document.getElementById("cut_reset_c").onclick = function(){
 }
 
 
-var lemmas = ['26_1', "26_3", "26_4"]
+var lemmas = ['26_1', "26_3", "26_4", "26_5"]
 
 
 for(item in lemmas){
@@ -437,6 +437,11 @@ for(item in lemmas){
     }
     b(item)
 }
+
+document.getElementById("coro26.4").onclick = function show() {
+    window.open ("./popups/26_4.html", "", "height=500, width=1250, top=200, left=300, titlebar=no, toolbar=no, menubar=no, scrollbars=yes, resizable=no,location=no, status=no");
+}
+
 
 document.getElementById("see_remain").onclick = function(){
     document.getElementById("yellow_equations").style.visibility="visible";
