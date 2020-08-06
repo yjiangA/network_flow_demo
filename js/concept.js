@@ -424,3 +424,127 @@ document.getElementById("cut_reset_c").onclick = function(){
     document.getElementById("c4_capa").style.visibility="hidden";
 }
 
+
+var lemmas = ['26_1']
+
+
+for(item in lemmas){
+    function b(item) {
+        var lem = lemmas[item];
+        document.getElementById(lem).onclick = function show() {
+            window.open ("./popups/"+ lem +".html", "", "height=500, width=1250, top=200, left=300, titlebar=no, toolbar=no, menubar=no, scrollbars=yes, resizable=no,location=no, status=no");
+        }
+    }
+    b(item)
+}
+
+document.getElementById("see_remain").onclick = function(){
+    document.getElementById("yellow_equations").style.visibility="visible";
+    document.getElementById("reverse_equation").style.visibility="hidden";
+    document.getElementById("remove_equation").style.visibility="hidden";
+    document.getElementById("final_equation").style.visibility="hidden";
+
+    document.getElementById("blue_lines").style.visibility="hidden";
+    document.getElementById("yellow_lines").style.visibility="visible";
+
+    document.getElementById("blue_nums").style.visibility="hidden";
+    document.getElementById("yellow_nums").style.visibility="visible";
+
+
+    document.getElementById("v1v3_yellow").style.visibility="visible";
+    document.getElementById("v4v3_yellow").style.visibility="visible";
+    document.getElementById("v4t_yellow").style.visibility="visible";
+
+    document.getElementById("v1v3_yellow_num").style.visibility="visible";
+    document.getElementById("v4v3_yellow_num").style.visibility="visible";
+    document.getElementById("v4t_yellow_num").style.visibility="visible";
+
+}
+
+document.getElementById("see_reverse").onclick = function(){
+    document.getElementById("yellow_equations").style.visibility="hidden";
+    document.getElementById("reverse_equation").style.visibility="visible";
+    document.getElementById("remove_equation").style.visibility="hidden";
+    document.getElementById("final_equation").style.visibility="hidden";
+
+    document.getElementById("blue_lines").style.visibility="visible";
+    document.getElementById("yellow_lines").style.visibility="hidden";
+
+    document.getElementById("blue_nums").style.visibility="visible";
+    document.getElementById("yellow_nums").style.visibility="hidden";
+
+    document.getElementById("v1v3_yellow").style.visibility="hidden";
+    document.getElementById("v4v3_yellow").style.visibility="hidden";
+    document.getElementById("v4t_yellow").style.visibility="hidden";
+
+    document.getElementById("v1v3_yellow_num").style.visibility="hidden";
+    document.getElementById("v4v3_yellow_num").style.visibility="hidden";
+    document.getElementById("v4t_yellow_num").style.visibility="hidden";
+
+}
+
+
+document.getElementById("put_2").onclick = function(){
+    document.getElementById("yellow_equations").style.visibility="hidden";
+    document.getElementById("reverse_equation").style.visibility="hidden";
+    document.getElementById("remove_equation").style.visibility="hidden";
+    document.getElementById("final_equation").style.visibility="hidden";
+
+    document.getElementById("blue_lines").style.visibility="visible";
+    document.getElementById("yellow_lines").style.visibility="visible";
+
+    document.getElementById("blue_nums").style.visibility="visible";
+    document.getElementById("yellow_nums").style.visibility="visible";
+
+    document.getElementById("v1v3_yellow").style.visibility="visible";
+    document.getElementById("v4v3_yellow").style.visibility="visible";
+    document.getElementById("v4t_yellow").style.visibility="visible";
+
+    document.getElementById("v1v3_yellow_num").style.visibility="visible";
+    document.getElementById("v4v3_yellow_num").style.visibility="visible";
+    document.getElementById("v4t_yellow_num").style.visibility="visible";
+
+}
+
+document.getElementById("remove_0").onclick = function(){
+    document.getElementById("yellow_equations").style.visibility="hidden";
+    document.getElementById("reverse_equation").style.visibility="hidden";
+    document.getElementById("remove_equation").style.visibility="visible";
+    document.getElementById("final_equation").style.visibility="visible";
+
+    document.getElementById("blue_lines").style.visibility="visible";
+    document.getElementById("yellow_lines").style.visibility="visible";
+
+    document.getElementById("blue_nums").style.visibility="visible";
+    document.getElementById("yellow_nums").style.visibility="visible";
+
+    document.getElementById("v1v3_yellow").style.visibility="hidden";
+    document.getElementById("v4v3_yellow").style.visibility="hidden";
+    document.getElementById("v4t_yellow").style.visibility="hidden";
+
+    document.getElementById("v1v3_yellow_num").style.visibility="hidden";
+    document.getElementById("v4v3_yellow_num").style.visibility="hidden";
+    document.getElementById("v4t_yellow_num").style.visibility="hidden";
+}
+
+
+document.getElementById("reset_build").onclick = function(){
+    document.getElementById("yellow_equations").style.visibility="hidden";
+    document.getElementById("reverse_equation").style.visibility="hidden";
+    document.getElementById("remove_equation").style.visibility="hidden";
+    document.getElementById("final_equation").style.visibility="hidden";
+
+    document.getElementById("blue_lines").style.visibility="hidden";
+    document.getElementById("yellow_lines").style.visibility="hidden";
+
+    document.getElementById("blue_nums").style.visibility="hidden";
+    document.getElementById("yellow_nums").style.visibility="hidden";
+
+    document.getElementById("v1v3_yellow").style.visibility="hidden";
+    document.getElementById("v4v3_yellow").style.visibility="hidden";
+    document.getElementById("v4t_yellow").style.visibility="hidden";
+
+    document.getElementById("v1v3_yellow_num").style.visibility="hidden";
+    document.getElementById("v4v3_yellow_num").style.visibility="hidden";
+    document.getElementById("v4t_yellow_num").style.visibility="hidden";
+}

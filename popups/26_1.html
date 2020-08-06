@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Lemma 26.1</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../style.css" />
+</head>
+
+<body>
+
+<h1> Lemma 26.1</h1>
+
+ <div class="section" >
+    <div class="sec_title">
+        <p>&nbsp &nbsp &nbsp Content</p>
+    </div>
+    <div class="content">
+        <p>Let G(V,E) be a flow network with source s and sink t, and let f be a flow in G.</p>
+        <p>Let G<sub>f</sub> be the residual network of G induced by f, and let f' be a flow in G<sub>f</sub>.</p>
+        <p> (f &uarr; f') = f(u,v) + f'(u,v) - f'(v,u)</p>
+        <p>Then |f &uarr; f'| = |f| + |f'|  </p>
+    </div>
+</div>
+
+<div class="section" >
+    <div class="sec_title">
+        <p>&nbsp &nbsp &nbsp Proof part 1</p>
+    </div>
+    <div class="content">
+        <p><b>Goal: Capacity Constraint</b></p>
+        <p> We want to show after we augment the flow (f &uarr; f')(u,v), it still satisfies capacity constraint
+        , that is:
+        </p>
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; (1) Each flow is &geq; 0</p>
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; (2) Each flow is bounded by capacity of each edges</p>
+
+        <p><b>(1)</b></p>
+        <p>If (u,v) is in E, then <span id="1">c<sub>f</sub>(v,u) = f(u,v) </span></p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp;  <span id="1_hint" style="visibility:hidden;"> 
+          By definition, the part we can send back from v to u</span></p>
+        
+        <p>Therefore, <span id="2">f'(v,u) </span>&leq; c<sub>f</sub>(v,u) = f(u,v) </p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp;  <span id="2_hint" style="visibility:hidden;"> 
+             The flow in residual network from v to u, bounded by the part we can send back from v to u</span></p>
+        
+        <p> (f &uarr; f')(u,v) = f(u,v) + f'(u,v) - f'(v,u)</p>
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &geq; 
+            f(u,v) + f'(u,v) - <span id="3">f(u,v)</span> &nbsp; &nbsp; 
+            <span id="3_hint" style="visibility:hidden;"> (By inequality above) </span></p>
+
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 
+            <span id="4">f'(u,v)</span> &nbsp; &nbsp; 
+            <span id="4_hint" style="visibility:hidden;">(Cancell 1st and 3rd terms)</span></p>
+
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            <span id="5">&geq; 0 </span>&nbsp; &nbsp; 
+            <span id="5_hint" style="visibility:hidden;">(It is a flow value) </p>
+
+        <p><b>(2)</b></p>
+        <p> (f &uarr; f')(u,v) = f(u,v) + f'(u,v) - f'(v,u)
+        
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <span id="6">&leq;</span> f(u,v) + f'(u,v) &nbsp; &nbsp; 
+        <span id="6_hint" style="visibility:hidden;"> (Because f'(v,u) is nonnegative) </span></p>
+
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            &leq; f(u,v) + <span id="7">c<sub>f</sub>(u,v)</span> &nbsp; &nbsp; 
+            <span id="7_hint" style="visibility:hidden;"> (By inequality above) </span></p>
+        
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            = f(u,v) + <span id="8">c(u,v) - f(u,v)</span> &nbsp; &nbsp; 
+            <span id="8_hint" style="visibility:hidden;"> (definition of c<sub>f</sub> when there's edge) </span></p>
+        
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = c(u,v)
+        
+    </div>
+</div>
+
+<div class="section" >
+    <div class="sec_title">
+        <p>&nbsp &nbsp &nbsp Proof part 2</p>
+    </div>
+    <div class="content">
+        <p><b>Goal: Flow conservation</b></p>
+        <p> We want to show after we augment the flow (f &uarr; f')(u,v), all edges still obey flow
+            conservation, that is sum of incoming flow = sum of outgoing flow.
+        </p>
+
+        <p>If (u,v) is in E, then <span id="1">c<sub>f</sub>(v,u) = f(u,v) </span></p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp;  <span id="1_hint" style="visibility:hidden;"> 
+          By definition, the part we can send back from v to u</span></p>
+        
+        <p>Therefore, <span id="2">f'(v,u) </span>&leq; c<sub>f</sub>(v,u) = f(u,v) </p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp;  <span id="2_hint" style="visibility:hidden;"> 
+             The flow in residual network from v to u, bounded by the part we can send back from v to u</span></p>
+        
+        <p> (f &uarr; f')(u,v) = f(u,v) + f'(u,v) - f'(v,u)</p>
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &geq; 
+            f(u,v) + f'(u,v) - <span id="3">f(u,v)</span> &nbsp; &nbsp; 
+            <span id="3_hint" style="visibility:hidden;"> (By inequality above) </span></p>
+
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 
+            <span id="4">f'(u,v)</span> &nbsp; &nbsp; 
+            <span id="4_hint" style="visibility:hidden;">(Cancell 1st and 3rd terms)</span></p>
+
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            <span id="5">&geq; 0 </span>&nbsp; &nbsp; 
+            <span id="5_hint" style="visibility:hidden;">(It is a flow value) </p>
+
+        <p><b>(2)</b></p>
+        <p> (f &uarr; f')(u,v) = f(u,v) + f'(u,v) - f'(v,u)
+        
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <span id="6">&leq;</span> f(u,v) + f'(u,v) &nbsp; &nbsp; 
+        <span id="6_hint" style="visibility:hidden;"> (Because f'(v,u) is nonnegative) </span></p>
+
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            &leq; f(u,v) + <span id="7">c<sub>f</sub>(u,v)</span> &nbsp; &nbsp; 
+            <span id="7_hint" style="visibility:hidden;"> (By inequality above) </span></p>
+        
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            = f(u,v) + <span id="8">c(u,v) - f(u,v)</span> &nbsp; &nbsp; 
+            <span id="8_hint" style="visibility:hidden;"> (definition of c<sub>f</sub> when there's edge) </span></p>
+        
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = c(u,v)
+        
+    </div>
+</div>
+
+<script src="../js/26_1.js"></script>
+
+</body>
+</html>
