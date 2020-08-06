@@ -3,24 +3,88 @@
 <head>
     <meta charset="utf-8" />
     <title>Corollary 26.3</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../style.css" />
 </head>
 
 <body>
 
 
-    <div class="section" >
-        <div class="sec_title">
-            <p>&nbsp &nbsp &nbsp Corollary 26.3</p>
-        </div>
-        <div class="content">
-            <p>content of the corollary</p>
-        </div>
+<h1> Corollary 26.3</h1>
+
+<div class="section" >
+    <div class="sec_title">
+           <p>&nbsp &nbsp &nbsp Content</p>
     </div>
+    <div class="content">
+        <p>Let G(V,E) be a flow network with source s and sink t, and let f be a flow in G.</p>
+        <p>Let p be an augmenting path in G<sub>f</sub>.</p>
+        <p>Let f<sub>p</sub> be defined as:</p>
+
+        <p>&nbsp; &nbsp; f<sub>p</sub>(u,v) = <span id="1">c<sub>f</sub>(p)</span> &nbsp; &nbsp; if (u,v) is on p
+        <span id="1_hint" style="visibility:hidden;"> Residual capacity, minimum c<sub>f</sub>(u,v) of edges on p </span></p>
 
 
+        <p>&nbsp; &nbsp; f<sub>p</sub>(u,v) = 0 otherwise.</p>
+        <p>Then the function f &uarr; f<sub>p</sub> is a flow in G with value 
+        |f &uarr; f<sub>p</sub>| = |f &uarr;| + |f<sub>p</sub>| > |f|</p>
 
-<script src="script.js"></script>
+       </div>
+</div>
+
+<div class="section" >
+    <div class="sec_title">
+           <p>&nbsp &nbsp &nbsp Lemma 26.1</p>
+    </div>
+    <div class="content">
+       <button id="26_1">See Lemma 26.1</button>
+    </div>
+</div>
+
+
+<div class="section" >
+    <div class="sec_title">
+           <p>&nbsp &nbsp &nbsp Lemma 26.2</p>
+    </div>
+    <div class="content">
+      <p> f<sub>p</sub> is a flow in G<sub>f</sub> with value |f<sub>p</sub>| = c<sub>f</sub>(p) > 0</p>
+
+     <p><b>Proof part 1: f<sub>p</sub> is a flow</b></p>
+     <p> (1) It satisfies capacity constraints: </p>
+     <p> &nbsp; &nbsp; f<sub>p</sub>(u,v) = c<sub>f</sub>(p), which is the minimum residual capacity </p>
+     <p> &nbsp; &nbsp; And the residual capacity must be less than or equal to actual capacity, since that is "what's left" </p>
+     <p> &nbsp; &nbsp; Thus is satisfies the capacity constraints. </p>
+     
+     <p> (2) It satisfies flow constraints, than is for each vertex expept s and t, sum of in = out </p>
+     <p> &nbsp; &nbsp; f<sub>p</sub>(u,v) = c<sub>f</sub>(p), which is the minimum residual capacity </p>
+     <p> &nbsp; &nbsp; Which is the same minimun number for all edges on this path. </p>
+     <p> &nbsp; &nbsp; For all vertices except s and t, they are on a path one followed by another.</p>
+     <p> &nbsp; &nbsp; Which means for each vertex there's a same amount c<sub>f</sub>(p) come in and out.</p>
+
+     <p><b>Proof part 2: |f<sub>p</sub>| = c<sub>f</sub>(p)</b></p>
+     <p> By definition |f<sub>p</sub>| = &sum;<sub> v in V</sub> f(s,v) - &sum;<sub> v in V</sub> f(v,s)</p>
+     <p> Because is it a simple path from s to t, there's no cycle so no edges from vertices back to s</p>
+     <p> Thus &sum;<sub> v in V</sub> f(v,s) = 0</p>
+     <p> Also because it is a simple path, there can be only one vertex after s, which value is c<sub>f</sub>(p)</p>
+     <p> Thus &sum;<sub> v in V</sub> f(s,v) = c<sub>f</sub>(p)</p>
+     <p> Which means |f<sub>p</sub>| = c<sub>f</sub>(p)</p>
+
+    </div>
+</div>
+
+
+<div class="section" >
+    <div class="sec_title">
+           <p>&nbsp &nbsp &nbsp Proof of 26.3</p>
+    </div>
+    <div class="content">
+        <p> By Lemma 26.1, |f &uarr; f<sub>p</sub>| = |f &uarr;| + |f<sub>p</sub>|</p>
+        <p> By Lemma 26.2, |f<sub>p</sub>| > 0</p>
+        <p> Thus |f &uarr; f<sub>p</sub>| = |f &uarr;| + |f<sub>p</sub>| > |f|</p>
+    </div>
+</div>
+
+
+<script src="../js/26_3.js"></script>
 
 </body>
 </html>
