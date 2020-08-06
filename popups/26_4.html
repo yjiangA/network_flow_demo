@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Lemma 26.4</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../style.css" />
+</head>
+
+<body>
+
+<h1> Lemma 26.4</h1>
+
+ <div class="section" >
+    <div class="sec_title">
+        <p>&nbsp &nbsp &nbsp Content</p>
+    </div>
+    <div class="content">
+        <p>Let G(V,E) be a flow network with source s and sink t, and let f be a flow in G.</p>
+        <p>Let (S,T) be any cut of G. Then the netflow across (S,T) is f(S,T) = |f|</p>
+    </div>
+</div>
+
+<div class="section" >
+    <div class="sec_title">
+        <p>&nbsp &nbsp &nbsp Proof</p>
+    </div>
+    <div class="content">
+
+        <p>By definition of flow conservation for any node u that is not s or t, &sum; <sub>v &isin; V</sub>f(u,v) = &sum; <sub>v &isin; V</sub>f(v,u)</p>
+        <p>Move things to left hand side, &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &sum; <sub>v &isin; V</sub>f(u,v) - &sum; <sub>v &isin; V</sub>f(v,u) = 0 
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (1)</p>
+        
+        <p>Any term in set <span id="1">S</span> except from s satisfies (1)
+            <span id="1_hint" style="visibility:hidden;">We made a cut and the part contains s is called S</span>
+         </p>
+
+         <p> Which means &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+             <span id="2">&sum; <sub>u &isin; S-{s}</sub> </span>
+             ( &sum; <sub>v &isin; V</sub>f(u,v) - &sum; <sub>v &isin; V</sub>f(v,u) ) = 0
+             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (2)
+             <span id="2_hint" style="visibility:hidden;">Sum of (in - out) for all vertices in S but s is 0</span>    
+            </p>
+
+        <p>By definition of flow value &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|f| = &sum; <sub>v &isin; V</sub>f(s,v) - &sum; <sub>v &isin; V</sub>f(v,s) 
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (3)</p>
+        
+
+        <p> Add (3) to (2) since it is 0: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              |f| = &sum; <sub>v &isin; V</sub>f(s,v) - &sum; <sub>v &isin; V</sub>f(v,s)
+              + &sum; <sub>u &isin; S-{s}</sub>
+              ( &sum; <sub>v &isin; V</sub>f(u,v) - &sum; <sub>v &isin; V</sub>f(v,u) )</p>
+        
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+             = &sum; <sub>v &isin; V</sub>f(s,v) - &sum; <sub>v &isin; V</sub>f(v,s)
+            <span id="3">+ &sum; <sub>u &isin; S-{s}</sub> &sum; <sub>v &isin; V</sub>f(u,v) </span> &nbsp; &nbsp;
+            <span id="4">- &sum; <sub>u &isin; S-{s}</sub> &sum; <sub>v &isin; V</sub>f(v,u) </span> 
+        </p>
+
+        <p>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        <span id="3_hint" style="visibility:hidden;">Combine &sum; <sub>v &isin; V</sub>f(u,v)</span>    
+        <span id="4_hint" style="visibility:hidden;">Combine &sum; <sub>v &isin; V</sub>f(v,u)</span>    
+        </p>
+
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+              = <span id="5">&sum; <sub>v &isin; V</sub>  ( f(s,v) +  &sum; <sub>u &isin; S-{s}</sub>f(u,v) ) </span> 
+              - <span id="6"> &sum; <sub>v &isin; V</sub>  ( f(v,s) +  &sum; <sub>u &isin; S-{s}</sub>f(u,v) )  </span>
+         </p>
+ 
+        <p>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        <span id="5_hint" style="visibility:hidden;">Combine &sum; <sub>v &isin; V</sub>f(s,v) with 
+            &sum; <sub>u &isin; S-{s}</sub> &sum; <sub>v &isin; V</sub>f(u,v)</span>    
+        <span id="6_hint" style="visibility:hidden;">Combine &sum; <sub>v &isin; V</sub>f(v,s)
+        with &sum; <sub>u &isin; S-{s}</sub> &sum; <sub>v &isin; V</sub>f(v,u)</span>    
+        </p>
+
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+              = <span id="7">&sum; <sub>v &isin; V</sub> &sum; <sub>u &isin; S</sub> f(u,v) </span> 
+              - <span id="8"> &sum; <sub>v &isin; V</sub> &sum; <sub>u &isin; S</sub> f(v,u) </span>
+         </p>
+ 
+        <p>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        <span id="7_hint" style="visibility:hidden;">The sum of all f(u,v) in S without f(s,v), then plus f(s,v), is just sum of
+         every u in S</span>    
+        </p>
+
+        <p>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        <span id="8_hint" style="visibility:hidden;">The sum of all f(v,u) in S without f(v,s), then plus f(v,s), is just sum of
+         every u in S</span>    
+        </p>
+
+        <p>And because V = S &cup; T, and S &cup; T = &empty;, we can split the V in this equation to S and T</p>
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+              = <span id="9">&sum; <sub>v &isin; S</sub> &sum; <sub>u &isin; S</sub> f(u,v) 
+              +  &sum; <sub>v &isin; T</sub> &sum; <sub>u &isin; S</sub> f(u,v)</span> 
+              - <span id="10"> &sum; <sub>v &isin; S</sub> &sum; <sub>u &isin; S</sub> f(v,u) 
+              - &sum; <sub>v &isin; T</sub> &sum; <sub>u &isin; S</sub> f(v,u)</span>
+         </p>
+ 
+        <p>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        <span id="9_hint" style="visibility:hidden;">Divide &sum; <sub>v &isin; V</sub> into 
+            &sum; <sub>v &isin; S</sub> and &sum; <sub>v &isin; T</sub></span> 
+            <span id="10_hint" style="visibility:hidden;">Divide &sum; <sub>v &isin; V</sub> into 
+                &sum; <sub>v &isin; S</sub> and &sum; <sub>v &isin; T</sub></span> 
+        </p>
+
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+              = <span id="11">&sum; <sub>v &isin; T</sub> &sum; <sub>u &isin; S</sub> f(u,v) 
+              -  &sum; <sub>v &isin; T</sub> &sum; <sub>u &isin; S</sub> f(v,u)</span> 
+              + (<span id="12"> &sum; <sub>v &isin; S</sub> &sum; <sub>u &isin; S</sub> f(u,v) 
+                - &sum; <sub>v &isin; S</sub> &sum; <sub>u &isin; S</sub> f(v,u) )</span>
+         </p>
+         <p>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        <span id="11_hint" style="visibility:hidden;">Put &sum; <sub>v &isin; T</sub> parts together</span> 
+            <span id="12_hint" style="visibility:hidden;">Put &sum; <sub>v &isin; S</sub> parts together</span> 
+        </p>
+
+        <p> And the 2 parts in paranthesis:
+            &sum; <sub>v &isin; S</sub> &sum; <sub>u &isin; S</sub> f(u,v) 
+            - &sum; <sub>v &isin; S</sub> &sum; <sub>u &isin; S</sub> f(v,u) 
+       </p>
+       <p>Each time we pick a pair x=u, y=v in f(u,v), we minus the same set x=v, y=u in f(v,u).
+           Which means they cancell out to be 0.
+       </p>
+
+       <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+          = &sum; <sub>v &isin; T</sub> &sum; <sub>u &isin; S</sub> f(u,v) 
+          -  &sum; <sub>v &isin; T</sub> &sum; <sub>u &isin; S</sub> f(v,u)
+        </p>
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            <span id="13">= f(S, T) </span>
+            </p>
+
+        <p>  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+        <span id="13_hint" style="visibility:hidden;">By definition of f(S, T) = 
+            &sum; <sub>u &isin; S</sub> &sum; <sub>v &isin; T</sub> f(u,v) 
+            -  &sum; <sub>u &isin; S</sub> &sum; <sub>v &isin; T</sub> f(v,u)</span> 
+        </p>
+    
+    </div>
+</div>
+
+<script src="../js/26_4.js"></script>
+
+</body>
+</html>

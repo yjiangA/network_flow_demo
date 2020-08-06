@@ -425,7 +425,7 @@ document.getElementById("cut_reset_c").onclick = function(){
 }
 
 
-var lemmas = ['26_1', "26_3"]
+var lemmas = ['26_1', "26_3", "26_4"]
 
 
 for(item in lemmas){
