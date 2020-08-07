@@ -117,14 +117,14 @@ document.getElementById("cut2").onclick = function(){
     net_flow_eg.getElementById("t").style.stroke="blue";
     net_flow_eg.getElementById("t").style.strokeWidth="6";
 
-    net_flow_eg.getElementById("sv1").style.stroke="green";
+    net_flow_eg.getElementById("sv1").style.stroke="blue";
     net_flow_eg.getElementById("v1v3").style.stroke="black";
     net_flow_eg.getElementById("v2v1").style.stroke="black";
     net_flow_eg.getElementById("v4v3").style.stroke="black";
     net_flow_eg.getElementById("v3v2").style.stroke="black";
     net_flow_eg.getElementById("v2v4").style.stroke="black";
     net_flow_eg.getElementById("v4t").style.stroke="black";
-    net_flow_eg.getElementById("sv2").style.stroke="green";
+    net_flow_eg.getElementById("sv2").style.stroke="blue";
     net_flow_eg.getElementById("v3t").style.stroke="black";
 
     document.getElementById("c1_nf").style.visibility="hidden";
@@ -300,14 +300,14 @@ document.getElementById("cut2_c").onclick = function(){
     capacity_eg.getElementById("t").style.stroke="blue";
     capacity_eg.getElementById("t").style.strokeWidth="6";
 
-    capacity_eg.getElementById("sv1").style.stroke="green";
+    capacity_eg.getElementById("sv1").style.stroke="blue";
     capacity_eg.getElementById("v1v3").style.stroke="black";
     capacity_eg.getElementById("v2v1").style.stroke="black";
     capacity_eg.getElementById("v4v3").style.stroke="black";
     capacity_eg.getElementById("v3v2").style.stroke="black";
     capacity_eg.getElementById("v2v4").style.stroke="black";
     capacity_eg.getElementById("v4t").style.stroke="black";
-    capacity_eg.getElementById("sv2").style.stroke="green";
+    capacity_eg.getElementById("sv2").style.stroke="blue";
     capacity_eg.getElementById("v3t").style.stroke="black";
 
     document.getElementById("c1_capa").style.visibility="hidden";
@@ -442,6 +442,9 @@ document.getElementById("coro26.4").onclick = function show() {
     window.open ("./popups/26_4.html", "", "height=500, width=1250, top=200, left=300, titlebar=no, toolbar=no, menubar=no, scrollbars=yes, resizable=no,location=no, status=no");
 }
 
+document.getElementById("coro26.5").onclick = function show() {
+    window.open ("./popups/26_5.html", "", "height=500, width=1250, top=200, left=300, titlebar=no, toolbar=no, menubar=no, scrollbars=yes, resizable=no,location=no, status=no");
+}
 
 document.getElementById("see_remain").onclick = function(){
     document.getElementById("yellow_equations").style.visibility="visible";

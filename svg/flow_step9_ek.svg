@@ -1,0 +1,74 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+
+
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="800" height="350">
+            <defs>
+                <marker id="arrow"
+                        markerUnits="strokeWidth"
+                        markerWidth="12"
+                        markerHeight="12"
+                        viewBox="0 0 12 12"
+                        refX="6"
+                        refY="6"
+                        orient="auto">
+                    <path d="M2,2 L10,6 L2,10 L6,6 L2,2" style="fill:black" />
+                </marker>
+            </defs>
+
+            <g>
+                <line id="sv1" x1="30" y1="165" x2="190.2" y2="58" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id="v1v3" x1="200" y1="35" x2="454" y2="35" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id="v3v2" x1="520" y1="15" x2="262.5" y2="282.5" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v2v4" x1="200" y1="315" x2="454" y2="315" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v4t" x1="500" y1="315" x2="665" y2="195" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "sv2" x1="30" y1="165" x2="190.2" y2="292" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v2v1" x1="230" y1="315" x2="230" y2="81" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v4v3" x1="500" y1="315" x2="500" y2="81" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+                <line id= "v3t" x1="500" y1="35" x2="662" y2="140" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
+            </g>
+
+            <g class="flow_demo">
+                <line class="flow" id="sv1_f" x1="30" y1="165" x2="190.2" y2="58" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="visibility:hidden" />
+                <line class="flow" id="v1v3_f" x1="200" y1="35" x2="454" y2="35" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="visibility:hidden" />
+                <line class="flow" id="v3v2_f" x1="520" y1="15" x2="262.5" y2="282.5" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="visibility:hidden" />
+                <line class="flow" id= "v2v4_f" x1="200" y1="315" x2="454" y2="315" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="visibility:visible" />
+                <line class="flow" id= "v4t_f" x1="500" y1="315" x2="665" y2="195" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="visibility:hidden" />
+                <line class="flow" id= "sv2_f" x1="30" y1="165" x2="190.2" y2="292" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="visibility:visible" />
+                <line class="flow" id= "v2v1_f" x1="230" y1="315" x2="230" y2="81" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="visibility:hidden" />
+                <line class="flow" id= "v4v3_f" x1="500" y1="315" x2="500" y2="81" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="visibility:visible" />
+                <line class="flow" id= "v3t_f" x1="500" y1="35" x2="662" y2="140" stroke="blue" stroke-width="4" marker-end="url(#arrow)" style="visibility:visible" />
+            </g>
+
+            <g class="nodes">
+                <circle id="s" cx="30" cy="165" r="30" style="fill:lightblue; stroke:blue" />
+                <circle id="v1" cx="230" cy="35" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="v2" cx="230" cy="315" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="v3" cx="500" cy="35" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="v4" cx="500" cy="315" r="30" style="fill:lightgreen; stroke:green" />
+                <circle id="t" cx="700" cy="165" r="30" style="fill:lightblue; stroke:blue" />
+            </g>
+
+            <g>
+                <text id="stext" x="25" y="170">S</text>
+                <text id="stext" x="220" y="40">V1</text>
+                <text id="stext" x="220" y="320">V2</text>
+                <text id="stext" x="490" y="40">V3</text>
+                <text id="stext" x="490" y="320">V4</text>
+                <text id="stext" x="695" y="170">T</text>
+            </g>
+
+            <g class="flow_value">
+                <text id="sv1_flow_v" x="75" y="100">12/16</text>
+                <text id="v1v3_flow_v" x="345" y="25">12/12</text>
+                <text id="v3v2_flow_v" x="340" y="165">0/9</text>
+                <text id="v2v4_flow_v" x="345" y="305">11/14</text>
+                <text id="v4t_flow_v" x="565" y="242">4/4</text>
+                <text id="sv2_flow_v" x="110" y="225">11/13</text>
+                <text id="v2v1_flow_v" x="195" y="180">0/4</text>
+                <text id="v4v3_flow_v" x="470" y="180">7/7</text>
+                <text id="v3t_flow_v" x="585" y="85">19/20</text>
+            </g>
+
+        </svg>

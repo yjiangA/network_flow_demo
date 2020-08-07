@@ -20,8 +20,9 @@
         <ul>
             <li><a href="./index.html">Introduction</a></li>
             <li><a href="./concept.html">Basic Concepts</a></li>
-            <li><a href="./ff.html">Ford-Fulkerson Method</a></li>
-            <li><a href="./pr.html">Push-relabel Algorithm</a></li>
+            <li><a href="./ff.html">Ford-Fulkerson</a></li>
+            <li><a href="./ek.html">Edmonds-Karp</a></li>
+            <li><a href="./lemma.html">Lemmas and Corollaries</a></li>
             <li><a href="./resource.html">Resources</a></li>
             <li><a href="./ref.html">References</a></li>
         </ul>
@@ -205,6 +206,8 @@
        <p> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp c<sub>f</sub>(v,u) = f(u,v)</p>
        <p> &nbsp &nbsp &nbsp - Otherwise when there's no edge in G, there's also no change of flow</p>
 
+       <img src="./img/con_1.JPG" alt="ek1" style="margin:20px"/>
+
        <p><b>Residual Network definition:</b> </p>
        <p> &nbsp &nbsp &nbsp Given a flow network G=(V,E) and a flow f. The residual network of G induced by f is G<sub>f</sub>=(V, E<sub>f</sub>), where</p>
 
@@ -301,7 +304,7 @@
             <span id="yellow_equations" style="visibility:hidden;">
             <p>SV1: 16 - 11 = 5</p>
             <p>SV2: 13 - 8 = 5</p>
-            <p>V2V1: 16 - 11 = 5</p>
+            <p>V2V1: 4 - 1 = 3</p>
             <p>V1V3: 12 - 12 = 0</p>
             <p>V3V2: 9 - 4 = 5</p>
             <p>V2V4: 14 - 11 = 3</p>
@@ -379,7 +382,7 @@
                 <text id="sv2_yellow_num" x="95" y="260" style="fill:yellow">5</text>
                 <text id="v2v1_yellow_num" x="245" y="165" style="fill:yellow">3</text>
                 <text id="v1v3_yellow_num" x="365" y="20" style="fill:yellow">0</text>
-                <text id="v3v2_yellow_num" x="365" y="300" style="fill:yellow">5</text>
+                <text id="v3v2_yellow_num" x="365" y="300" style="fill:yellow">3</text>
                 <text id="v2v4_yellow_num" x="385" y="195" style="fill:yellow">5</text>
                 <text id="v4v3_yellow_num" x="475" y="165" style="fill:yellow">0</text>
                 <text id="v3t_yellow_num" x="580" y="130" style="fill:yellow">5</text>
@@ -402,7 +405,7 @@
 
         </svg>
 
-        <p><b>Augmentation:</b> A flow in residual network G<sub>f</sub>is a hint for adding flow in G</p>
+        <p><b>Augmentation:</b> A flow in residual network G<sub>f</sub> is a hint for adding flow in G</p>
         <p>If f is a flow in G and f' is a flow in G<sub>f</sub>, we define augmentation:</p>
         <p> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp (f &uarr; f') =
             <span id="send">f(u,v) </span> 
@@ -415,10 +418,12 @@
                 <span id="sendmore_hint" style="visibility:hidden;">The amount we send more in f' from u to v</span>
                 <span id="sendback_hint" style="visibility:hidden;">The amount we send back in f' from v to u</span>
             </p>
+
+            <img src="./img/con_2.JPG" alt="con2" style="margin:20px"/>
  
    <p> <b>Lemma 26.1 </b> |f &uarr; f'| = |f| + |f'|  <button id="26_1">WHY?</button> </p>
 
-        <p><b>Augmenting Path</b>: A simple path from s to t in the residual network in G<sub>f</sub> </p>
+        <p><b>Augmenting Path</b>: A simple path from s to t in the residual network G<sub>f</sub> </p>
         <p><b>Residual Capacity</b>: The maximum amount by which we can increase the flow on each edge in an augmenting 
         path p.</p>
 
@@ -435,7 +440,8 @@
 
 
 
-
+        <img src="./img/con_3.JPG" alt="con3" style="margin:20px"/>
+ 
 
 
     </div>
@@ -454,16 +460,6 @@
         <p> &nbsp &nbsp &nbsp T, which contains target t </p>
 
         <p><b>Net Flow:</b> If f is a flow, the net flow(S, T) across the cut(S, T) is defined to be:</p>
-
-        <p> &nbsp &nbsp &nbsp f(S,T) = 
-            &sum; <sub> u &isin; S </sub>
-            &sum; <sub> v &isin; T </sub>
-            f(u,v)
-            &nbsp - &nbsp
-            &sum; <sub> u &isin; S </sub>
-            &sum; <sub> v &isin; T </sub>
-            f(v,u)
-        </p>
 
         
         <p> &nbsp &nbsp &nbsp f(S,T) = 
@@ -485,6 +481,9 @@
             <span id= "vint2_hint" style="visibility:hidden;">All nodes in part T</sub></span>
             <span id= "fvu_hint" style="visibility:hidden;">Sum up the flow from nodes in T to nodes in S</span>
         </p>
+
+        <img src="./img/con_4.JPG" alt="con4" style="margin:20px"/>
+ 
 
         <p><b>Net Flow on Example cuts:</b>
         <button id="cut1">cut 1</button>
@@ -588,7 +587,7 @@
         </svg>
 
         <p><b>Observation(Lemma 26.4)</b>: 
-            The net flow acorss any cut is the same, which euqals the value of the flow <button id="26_4">WHY?</button></p> 
+            The net flow acorss any cut is the same, which equals the value of the flow <button id="26_4">WHY?</button></p> 
         
 
         <p><b>Capacity of cut:</b> The capacity of cut(S, T) is sum of capacity of edges from node in set S to T</p>
@@ -709,7 +708,9 @@
 
         <p><b>Minimum Cut: </b> A cut whose capacity is minimum over all cuts of the network</p>
     
-        <p>Corollary 26.5: The value of any flow f in a flow network G is bounded from above by the capacity of any cut of G.</p>
+        <p><b>Corollary 26.5:</b> 
+            The value of any flow f in a flow network G is bounded from above by the capacity of any cut of G.
+        <button id="coro26.5">WHY?</button></p>
     </div>
 </div>
 
@@ -763,45 +764,17 @@
                 If it is possible to raise it, then there's an edge c<sub>f</sub> from u to v = c(u,v) - f(u,v) </p>
 
             <p> &nbsp &nbsp &nbsp &nbsp
-                In this way v is reachabel from u, which means v is reachable from s, and v should be in set S, <br>
+                In this way v is reachable from u, which means v is reachable from s, and v should be in set S, <br>
                 &nbsp &nbsp &nbsp &nbsp which contradicts the assumption that v is in T </p>
 
-            <svg width="1000" height="200">
-                <defs>
-                    <marker id="arrow"
-                            markerUnits="strokeWidth"
-                            markerWidth="12"
-                            markerHeight="12"
-                            viewBox="0 0 12 12"
-                            refX="6"
-                            refY="6"
-                            orient="auto">
-                        <path d="M2,2 L10,6 L2,10 L6,6 L2,2" style="fill:black" />
-                    </marker>
-                </defs>
+                <img src="./img/con_5.JPG" alt="con5" style="margin:20px"/>
 
-                <circle id="eg_s" cx="100" cy="100" r="30" style="fill:lightgreen; stroke:green" />
-                <circle id="eg_u" cx="300" cy="100" r="30" style="fill:lightgreen; stroke:green" />
-                <circle id="eg_v" cx="500" cy="100" r="30" style="fill:lightblue; stroke:blue" />
-                <circle id="eg_t" cx="700" cy="100" r="30" style="fill:lightblue; stroke:blue" />
-
-                <line id="eg_su" x1="130" y1="100" x2="255" y2="100" stroke="black" stroke-width="4" marker-end="url(#arrow)"
-                stroke-dasharray="10" stroke-dashoffset="5" />
-                <line id="eg_uv" x1="320" y1="80" x2="460" y2="80" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
-                <line id="eg_vu" x1="480" y1="120" x2="340" y2="120" stroke="black" stroke-width="4" marker-end="url(#arrow)" />
-            
-                <text x="95" y="105">S</text>
-                <text x="295" y="105">U</text>
-                <text x="495" y="105">V</text>
-                <text x="695" y="105">T</text>
-            
-            </svg>
 
             <p> &nbsp &nbsp &nbsp
                 If there's an edge from v to u, we must have f(v,u) = 0</p>
 
             <p> &nbsp &nbsp &nbsp &nbsp
-                Because if we have f(u, v) &NotEqual;; 0, it is possible to send flow back from u to v in c<sub>f</sub></p>
+                Because if we have f(u, v) &NotEqual; 0, it is possible to send flow back from u to v in c<sub>f</sub></p>
                 
             <p> &nbsp &nbsp &nbsp &nbsp
                 Same idea, in this way v is reachable from s. </p>

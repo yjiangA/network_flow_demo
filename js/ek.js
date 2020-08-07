@@ -1,13 +1,3 @@
-
-document.getElementById("see_explain").onclick = function(){
-    var seehints = document.getElementsByClassName("algo_hint");
-
-    for (var i=0; i < 7; i++) {
-        seehints[i].style.visibility="visible";
-        seehints[i].style.backgroundColor="lightgreen";
-    }   
-}
-
 document.getElementById("step0_next").onclick = function(){
     document.getElementById("step1").style.display="block";
     document.getElementById("step0").style.display="none";
@@ -117,64 +107,4 @@ document.getElementById("step10_next").onclick = function(){
 document.getElementById("step11_prev").onclick = function(){
     document.getElementById("step11").style.display="none";
     document.getElementById("step10").style.display="block";
-}
-
-document.getElementById("step11_next").onclick = function(){
-    document.getElementById("step12").style.display="block";
-    document.getElementById("step11").style.display="none";
-}
-
-document.getElementById("step12_prev").onclick = function(){
-    document.getElementById("step12").style.display="none";
-    document.getElementById("step11").style.display="block";
-}
-
-document.getElementById("step12_next").onclick = function(){
-    document.getElementById("step13").style.display="block";
-    document.getElementById("step12").style.display="none";
-}
-
-document.getElementById("step13_prev").onclick = function(){
-    document.getElementById("step13").style.display="none";
-    document.getElementById("step12").style.display="block";
-}
-
-document.getElementById("step13_next").onclick = function(){
-    document.getElementById("step14").style.display="block";
-    document.getElementById("step13").style.display="none";
-}
-
-document.getElementById("step14_prev").onclick = function(){
-    document.getElementById("step14").style.display="none";
-    document.getElementById("step13").style.display="block";
-}
-
-document.getElementById("step14_next").onclick = function(){
-    document.getElementById("step15").style.display="block";
-    document.getElementById("step14").style.display="none";
-}
-
-document.getElementById("step15_prev").onclick = function(){
-    document.getElementById("step15").style.display="none";
-    document.getElementById("step14").style.display="block";
-}
-
-document.getElementById("step15_next").onclick = function(){
-    document.getElementById("step16").style.display="block";
-    document.getElementById("step15").style.display="none";
-}
-
-document.getElementById("step16_prev").onclick = function(){
-    document.getElementById("step16").style.display="none";
-    document.getElementById("step15").style.display="block";
-}
-
-document.getElementById("step16_next").onclick = function(){
-    document.getElementById("step17").style.display="block";
-    document.getElementById("step16").style.display="none";
-}
-
-document.getElementById("step17_prev").onclick = function(){
-    document.getElementById("step17").style.display="none";
-    document.getElementById("step16").style.display="block";
 }

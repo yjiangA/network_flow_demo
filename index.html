@@ -19,8 +19,9 @@
         <ul>
             <li><a href="./index.html">Introduction</a></li>
             <li><a href="./concept.html">Basic Concepts</a></li>
-            <li><a href="./ff.html">Ford-Fulkerson Method</a></li>
-            <li><a href="./pr.html">Push-relabel Algorithm</a></li>
+            <li><a href="./ff.html">Ford-Fulkerson</a></li>
+            <li><a href="./ek.html">Edmonds-Karp</a></li>
+            <li><a href="./lemma.html">Lemmas and Corollaries</a></li>
             <li><a href="./resource.html">Resources</a></li>
             <li><a href="./ref.html">References</a></li>
         </ul>
@@ -40,11 +41,11 @@
             </p>
             
             <p><b>Supply & Target:</b> 
-                supply(S) and a target(T), want to send from supply to target, 
+                supply(S) and target(T). We want to send from supply to target, 
                 there can be infinite supply avaliable.
             </p>
             
-            <p><b>Capacity:</b> Each edge have some capacity c(x,y)
+            <p><b>Capacity:</b> Each edge has some capacity c(x,y)
                 <button id="eg_capacity">example capacity</button>
             </p>
             
@@ -56,7 +57,7 @@
             </p>
 
             <p><b>Flow Conservation:</b> For each node that is not supply or target, the incoming flow is equal to
-                outcoming flow.
+                outgoing flow.
                 <button id="v1_anime">sum of v1</button> 
                 <button id="v2_anime">sum of v2</button> 
                 <button id="v3_anime">sum of v3</button> 
@@ -66,12 +67,12 @@
 
             <p><b>Value: </b> The value |f| of a flow f is defined as:
             </p>
-            <p>&nbsp; &nbsp; &nbsp; |f| = &sum;<sub>v in V</sub> f(s,v) - &sum;<sub>v in V</sub> f(v,v)</p>
-            <p>&nbsp; &nbsp; &nbsp; That is the total flow out of source - the total flow into sourece</p>
+            <p>&nbsp; &nbsp; &nbsp; |f| = &sum;<sub>v in V</sub> f(s,v) - &sum;<sub>v in V</sub> f(v,s)</p>
+            <p>&nbsp; &nbsp; &nbsp; That is the total flow out of source - the total flow into source</p>
             <p>&nbsp; &nbsp; &nbsp; It is trivial that we want to minimize the flow going back to source.</p>
 
             <p><b>Output:</b> Compute flow on each edge such that we have maximum flow coming to target.
-                <button id="final_sum">see final sum</button>
+                <button id="final_sum">see final sum for this flow</button>
                 <button id="final_sum_reset">reset</button> 
             </p>
 
