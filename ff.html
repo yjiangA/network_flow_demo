@@ -33,7 +33,23 @@
         <p>&nbsp &nbsp &nbsp Basic of Ford-Fulkerson</p>
     </div>
     <div class="content" id="problem_intro_con">
-        <p>algorithm</p>
+        <p>As we proved previously, when there's some augmenting path in G<sub>f</sub>, we can improve the current flow.</p>
+        <p>So the basic idea of Ford-Fulkerson method is: when there's an augmenting path, improve it, repeat until no augmenting path.</p>
+        <button id="see_explain">See explaination</button>
+
+        <div style="margin:30px"> 
+            <p> <b>FORD-FULKERSON (G, s, t)</b></p>
+            <p> <b>for</b> each edge (u,v) &isin; G.E</p>
+            <p> &nbsp;&nbsp;&nbsp;&nbsp;(u,v).f = 0   <span class="algo_hint">Initialize all flow to be 0</span>  <p>
+            <p> <b>while</b> there exists a path p from s to t in the residual network G<sub>f</sub>  <span class="algo_hint">If there's any augmenting path</span> </p>
+            <p> &nbsp;&nbsp;&nbsp;&nbsp;c<sub>f</sub>(p) = min{ c<sub>f</sub>(u,v) : (u,v) is in p } <span class="algo_hint">Find the residual capacity on this path</span> </p>
+            <p> &nbsp;&nbsp;&nbsp;&nbsp;<b>for</b> each edge (u,v) in p <span class="algo_hint">For each edge in path</span></p>
+            <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>if</b> (u,v) &isin; E <span class="algo_hint">If there's an edge from u to v in E, which has some flow.</span></p>
+            <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(u,v).f = (u,v).f + c<sub>f</sub>(p) <span class="algo_hint">Add that much flow</span></p>
+            <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>else</b> (u,v).f = (u,v).f - c<sub>f</sub>(p)<span class="algo_hint">Otherwise send back some flow</span></p>
+        </div>
+
+
     </div>
 </div>
 
@@ -43,9 +59,28 @@
         <p>&nbsp &nbsp &nbsp Demo of Ford-Fulkerson</p>
     </div>
     <div class="content" id="def_con">
-        <p>Demo</p>
+
+
+    <button id="Initialize">Initialize</button>
+    <button id="Initialize">Prev</button>
+    <button id="Initialize">Next</button>
+
+
+    <p><b>Graph G with flow</b></p>
+
+    <img src="./svg/flow_initial.svg" alt="aa"/>
+
+    <p><b>Residual Network</b></p>
+
+    <img src="./svg/res_initial.svg" alt="aa"/>
+
+
+
     </div>
 </div>
+
+
+
 
 
 <div class="section" id="res_sec">
@@ -53,7 +88,20 @@
         <p>&nbsp &nbsp &nbsp Runtime of Ford-Fulkerson</p>
     </div>
     <div class="content" id="res_con">
-        <p>runtime, click to see proof</p>
+        <p>As seen above, the runtime depends on how to find a augmenting path in G<sub>f</sub></p>
+        <p>And we saw in the demo, at some steps in the middle maybe we need to redo some steps and cancell some flow</p>
+        <p></p>
+
+        <p>Suppose f* denotes a maximum flow in the transformed network, this loop of find and augment execute at most |f*| times</p>
+        <p>Since the flow value increase by at lease 1 each iteration</p>
+        <p></p>
+
+        <p>In each iternation, assume we put all possible edges, both (u,v) and (v,u), into a data structure and do a BFS or DFS to find a path</p>
+        <p>The time to find a path is O(V + E'), where E' = 2E for edges in both directions.</p>
+        <p>O(V + E') = O(2E) = O(E)</p>
+        <p>Since the initialize part also takes O(E), total runtime will be O(E) + O(|f*|) * O(E) = O(E|f*|).</p>
+
+
     </div>
 </div>
 
@@ -63,7 +111,8 @@
         <p>&nbsp &nbsp &nbsp Basic of Edmonds-Karp</p>
     </div>
     <div class="content" id="problem_intro_con">
-        <p>algorithm</p>
+        <p>Edmonds-Karp Algorithm finds the augmenting path with BFS. </p>
+        <p>Which means if we regard each edge as unit distance, we always pick the shortest path from s to t. </p>
     </div>
 </div>
 
@@ -83,15 +132,105 @@
         <p>&nbsp &nbsp &nbsp Runtime of Edmonds-Karp</p>
     </div>
     <div class="content" id="res_con">
-        <p>runtime, click to see proof</p>
+        <p>It is possible to prove that the runtime of Edmonds-Karp is O(VE&sup2;)</p>
+        <p><b>Notation:</b> Define <b>&delta;<sub>f</sub>(u,v)</b> for the shortest-path distance from u to v in G<sub>f</sub>, where each edge has unit distance</p>
+        
+        <p><b>Lemma 26.7:</b> For all vertices v &isin; V - {s,t} the shortest-path distance &delta;<sub>f</sub>(s,v) in residual network
+        increases monotonically with each flow augmentation</p>
+
+        <img src="./img/ek_1.JPG" alt="ek1" style="margin:20px"/>
+
+        <p><b>Proof</b> Suppose for sake of contradiction that for some vertex v &isin; V - {s,t} there is a flow augmentation that causes the shortest path distance to decrease.</p>
+        <p>Let f be the flow just before the augmentation, f' be the one afterwards. </p>
+        <p>Let v be the vertex with minimum &delta;<sub>f '</sub>(s,v) in the set of vertices whose distance was decreased</p>
+        <p> so that &delta;<sub>f '</sub>(u,v) &lt; &delta;<sub>f</sub>(u,v)</p>
+        
+        <img src="./img/ek_2.JPG" alt="ek2" style="margin:20px"/>
+
+        <p>Let p = s &sim; u &rarr; v be a shortest path from s to v in G<sub>f'</sub>,</p>
+        <p> so that (u,v) &isin; E<sub>f'</sub>, and &delta;<sub>f</sub>(s,u) = &delta;<sub>f</sub>(s,v) - 1 </p>
+        
+        <img src="./img/ek_3.JPG" alt="ek3" style="margin:20px"/>
+
+        <p> Because we chose v to have the minimum &delta;<sub>f '</sub>(s,v) in those decreased, </p>
+        <p> It is not possible that u has a smaller &delta;<sub>f '</sub>(s,u) and it is decreased </p>
+        <p> And we know s &sim; u &rarr; v is a shortest path, thus s &sim; u is also a shortest path which is shorter than s &sim; v.</p>
+        <p> So if &delta;(s,u) is decreased, we will have a vertex whose distance was decreased, and also &delta;<sub>f '</sub>(s,u) &le; &delta;<sub>f '</sub>(s,v) </p>
+        <p> Which contradicts with how we chose v as the minimum one. </p>
+        <p> Since &delta;<sub>f '</sub>(s,u) &le; &delta;<sub>f '</sub>(s,v) must be true, the explaination to avoid contradiction is that &delta;(s,u) doesn't decrease</p>
+        <p> Which means &delta;<sub>f '</sub>(s,u) &geq; &delta;<sub>f </sub>(s,u)</p>
+
+        <img src="./img/ek_4.JPG" alt="ek4" style="margin:20px"/>
+
+        <p>We claim that (u,v) not in E<sub>f</sub>. Suppose for sake of contradiction, (u,v) is in E</p>
+        <p>&delta;<sub>f</sub>(s,v) &le; &delta;<sub>f </sub>(s,u) + 1</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &le; &delta;<sub>f '</sub>(s,u) + 1</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = &delta;<sub>f '</sub>(s,v)</p>
+        <p>Which contradicts the assumption that &delta;<sub>f '</sub>(s,v) &lt; &delta;<sub>f</sub>(s,v)</p>
+        
+        <img src="./img/ek_5.JPG" alt="ek5" style="margin:20px"/>
+
+        <p>Now we know (u,v) is not in E<sub>f</sub> but in E<sub>f'</sub></p>
+        <p>Which means this edge appears after the augmentation.</p>
+        <p>This can only happen when the flow from v to u is previously 0 but increased.</p>
+        <p>Beause Edmonds-Karp always pick the shortest path to augment, so the shortest path from s to u in G<sub>f</sub> has (v,u) as last edge</p>
+        <p>Therefore, &delta;<sub>f</sub>(s,v) = &delta;<sub>f</sub>(s,u) - 1</p>
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            &leq; &delta;<sub>f '</sub>(s,u) - 1</p>
+        <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            = &delta;<sub>f '</sub>(s,v) - 2</p>
+        <p> Which contradicts the assumption that &delta;<sub>f '</sub>(s,v) &lt; &delta;<sub>f</sub>(s,v) </p> 
+
+        <img src="./img/ek_6.JPG" alt="ek6" style="margin:20px"/>
+
+        <p> Thus we conclude our assumption that such a vertex v exists. </p> 
+        <p> And because the smallest one doesn't exist, such vertex that decrease all not exist. Thus the distance cannot decrease. </p> 
+
+        <hr>
+
+        <p><b>Lemma 26.8:</b> The total number of flow augmentations performed by the algorithm is O(VE)</p>
+        <p><b>Proof</b> We define an edge (u,v) in residual network as critical on an augmenting path p,</p>
+        <p>if the residual capacity of p is the residual capacity of (u,v) </p>
+        <p>That is c<sub>f</sub>(p) = c<sub>f</sub>(u,v) </p>
+
+        <p>After we augmented flow along an augmenting path, any critical edge on the path disappears from the residual network</p>
+        <p>And also, at least one edge on path p must be critical</p>
+
+        <p>We will show that each of the |E| edges can become critical at most |V|/2 times</p>
+        <img src="./img/ek_7.JPG" alt="ek7" style="margin:20px"/>
+
+        <p>Let u and v be vertices in V with edge (u,v)</p>
+        <p>When edge (u,v) is critical for the first time, since we always augment the shortest path, we have:</p>
+        <p>&delta;<sub>f</sub>(s,v) = &delta;<sub>f</sub>(s,u) + 1</p>
+        <p>And (u,v) disappears in the residual network.</p>
+        <p>And it cannot reappear until the flow from u to v is decreased, which occurs when (v,u) appears</p>
+        <p>Suppose f' is the flow after (u,v) reappear and (v,u) appears, we have:</p>
+        <p>&delta;<sub>f '</sub>(s,u) = &delta;<sub>f '</sub>(s,v) + 1</p>
+        
+        <img src="./img/ek_8.JPG" alt="ek8" style="margin:20px"/>
+
+        
+        <p>Since &delta;<sub>f</sub>(s,v) &leq; &delta;<sub>f '</sub>(s,v) by Lemma 26.7, we have: </p>
+        <p>&delta;<sub>f '</sub>(s,u) = &delta;<sub>f '</sub>(s,v) + 1</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            &geq; &delta;<sub>f</sub>(s,v) + 1</p>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            = &delta;<sub>f</sub>(s,u) + 2</p>
+
+         <p>This means, between the first and next time (u,v) become critical, the distance from s to u increase by at least 2</p>   
+         <p>The distance between s and u is initially 0, and cannot exceed |V|-2 since u is not s or t</p>   
+         <p>Thus it can be critical for at mist |V|-2/2 = |V|/2 -1 times before it is unreachable</p>   
+         <p>Since there're O(E) number of verices, the total number of possible critical edges in all the time is O(VE)</p>   
     </div>
 </div>
+
+
 
 <div class="bottom">
   <p>Yuye.Jiang@tufts.edu  &nbsp &nbsp &nbsp  Comp150-ALG-Summer2020</p>
 </div>
 
-<script src="script.js"></script>
+<script src="./js/ff.js"></script>
 
 </body>
 </html>

@@ -587,10 +587,9 @@
             
         </svg>
 
-
-        <p>Obervation: The net flow acorss any cut is the sam, which euqals the value of the flow</p>
+        <p><b>Observation(Lemma 26.4)</b>: 
+            The net flow acorss any cut is the same, which euqals the value of the flow <button id="26_4">WHY?</button></p> 
         
-
 
         <p><b>Capacity of cut:</b> The capacity of cut(S, T) is sum of capacity of edges from node in set S to T</p>
         <p> &nbsp &nbsp &nbsp c(S,T) = 
@@ -731,7 +730,7 @@
             Suppose for the sake of contradiction that f is maximum flow in G, but G<sub>f</sub> has an augmenting path p.</p>
         
             <p> &nbsp &nbsp &nbsp
-            Then, by Corollary 26.3<button id="coro26.3">WHY?</button>, if we augment f by f<sub>p</sub> we
+            Then, by Corollary 26.3<button id="26_3">WHY?</button>, if we augment f by f<sub>p</sub> we
             can get a flow |f &uarr; f<sub>p</sub>| strictly greater than |f|</p>
 
             <p> &nbsp &nbsp &nbsp
@@ -848,11 +847,11 @@
         </p>
 
         <p> &nbsp &nbsp &nbsp
-            Then, by Lemma 26.4<button id="26_4">WHY?</button>, |f| = f(S,T) = c(S,T)</p>
+            Then, by Lemma 26.4<button id="coro26.4">WHY?</button>, |f| = f(S,T) = c(S,T)</p>
 
         <p><b>Proof: 3 (Flow = capacity of some cut) &rArr; 1 (Is a max flow)</b></p>
         <p> &nbsp &nbsp &nbsp 
-            By by Corollary 26.5<button id="coro26.4">WHY?</button> 
+            By by Corollary 26.5<button id="26_5">WHY?</button> 
          |f| &leq; c(S, T) for all cuts (S, T). 
         The condition |f| = c(S, T) implies that f is a maximum flow.</p>
 
