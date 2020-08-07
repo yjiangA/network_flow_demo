@@ -6,6 +6,7 @@
 
 # Webpage  
   https://yjianga.github.io/network_flow_demo/index.html  
+  Clear the cache and reload if incomplete version of webpage appears.  
 
 # Things Implemented  
   Intruduction of network flow problem  
